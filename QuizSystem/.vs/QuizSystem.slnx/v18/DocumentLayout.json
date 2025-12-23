@@ -32,7 +32,7 @@
               "RelativeDocumentMoniker": "QuizSystem.ConsoleRunner\\Program.cs",
               "ToolTip": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.ConsoleRunner\\Program.cs",
               "RelativeToolTip": "QuizSystem.ConsoleRunner\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAgwCQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAgwBkAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-23T11:08:16.806Z",
               "EditorCaption": ""
@@ -40,15 +40,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "QuizSystem.ConsoleRunner",
+              "Title": "QuizSystem.ConsoleRunner.csproj",
               "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.ConsoleRunner\\QuizSystem.ConsoleRunner.csproj",
               "RelativeDocumentMoniker": "QuizSystem.ConsoleRunner\\QuizSystem.ConsoleRunner.csproj",
               "ToolTip": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.ConsoleRunner\\QuizSystem.ConsoleRunner.csproj",
               "RelativeToolTip": "QuizSystem.ConsoleRunner\\QuizSystem.ConsoleRunner.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-12-23T11:07:21.896Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-23T11:07:21.896Z"
             },
             {
               "$type": "Document",
@@ -60,8 +59,7 @@
               "RelativeToolTip": "QuizSystem.Core\\QuizSystem.Core.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-12-23T09:07:32.833Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-23T09:07:32.833Z"
             }
           ]
         }
