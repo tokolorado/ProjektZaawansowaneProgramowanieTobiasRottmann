@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net10.0": {}
+    "net10.0": {
+      "QuizSystem.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/QuizSystem.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/QuizSystem.Core.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "QuizSystem.Core/1.0.0": {
+      "type": "project",
+      "path": "../QuizSystem.Core/QuizSystem.Core.csproj",
+      "msbuildProject": "../QuizSystem.Core/QuizSystem.Core.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net10.0": []
+    "net10.0": [
+      "QuizSystem.Core >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\tobia\\.nuget\\packages\\": {}
@@ -32,7 +51,11 @@
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Core\\QuizSystem.Core.csproj": {
+              "projectPath": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Core\\QuizSystem.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
