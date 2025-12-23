@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QuizSystem.ConsoleRunner")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d2f48573bfe96c61987bdd72d77e2e434efe907b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+961083c4003714bb1efd12faf7aa0b4420f4b810")]
 [assembly: System.Reflection.AssemblyProductAttribute("QuizSystem.ConsoleRunner")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QuizSystem.ConsoleRunner")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

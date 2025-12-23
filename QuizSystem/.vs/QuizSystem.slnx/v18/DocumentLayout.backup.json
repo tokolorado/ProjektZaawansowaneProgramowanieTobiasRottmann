@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C4158E5F-3A57-434A-81B2-12F323DD7475}|QuizSystem.ConsoleRunner\\QuizSystem.ConsoleRunner.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.consolerunner\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4158E5F-3A57-434A-81B2-12F323DD7475}|QuizSystem.ConsoleRunner\\QuizSystem.ConsoleRunner.csproj|solutionrelative:quizsystem.consolerunner\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C4158E5F-3A57-434A-81B2-12F323DD7475}|QuizSystem.ConsoleRunner\\QuizSystem.ConsoleRunner.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.consolerunner\\quizsystem.consolerunner.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{C4158E5F-3A57-434A-81B2-12F323DD7475}|QuizSystem.ConsoleRunner\\QuizSystem.ConsoleRunner.csproj|solutionrelative:quizsystem.consolerunner\\quizsystem.consolerunner.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{72459C79-915F-3C3D-2FBE-B463020766B1}|QuizSystem.Core\\QuizSystem.Core.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.core\\quizsystem.core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{72459C79-915F-3C3D-2FBE-B463020766B1}|QuizSystem.Core\\QuizSystem.Core.csproj|solutionrelative:quizsystem.core\\quizsystem.core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4158E5F-3A57-434A-81B2-12F323DD7475}|QuizSystem.ConsoleRunner\\QuizSystem.ConsoleRunner.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.consolerunner\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4158E5F-3A57-434A-81B2-12F323DD7475}|QuizSystem.ConsoleRunner\\QuizSystem.ConsoleRunner.csproj|solutionrelative:quizsystem.consolerunner\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,32 +27,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.ConsoleRunner\\Program.cs",
-              "RelativeDocumentMoniker": "QuizSystem.ConsoleRunner\\Program.cs",
-              "ToolTip": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.ConsoleRunner\\Program.cs",
-              "RelativeToolTip": "QuizSystem.ConsoleRunner\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAgwCQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-23T11:08:16.806Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "QuizSystem.ConsoleRunner",
+              "Title": "QuizSystem.ConsoleRunner.csproj",
               "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.ConsoleRunner\\QuizSystem.ConsoleRunner.csproj",
               "RelativeDocumentMoniker": "QuizSystem.ConsoleRunner\\QuizSystem.ConsoleRunner.csproj",
               "ToolTip": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.ConsoleRunner\\QuizSystem.ConsoleRunner.csproj",
               "RelativeToolTip": "QuizSystem.ConsoleRunner\\QuizSystem.ConsoleRunner.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2025-12-23T11:07:21.896Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "QuizSystem.Core.csproj",
               "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Core\\QuizSystem.Core.csproj",
               "RelativeDocumentMoniker": "QuizSystem.Core\\QuizSystem.Core.csproj",
@@ -61,6 +48,19 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2025-12-23T09:07:32.833Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.ConsoleRunner\\Program.cs",
+              "RelativeDocumentMoniker": "QuizSystem.ConsoleRunner\\Program.cs",
+              "ToolTip": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.ConsoleRunner\\Program.cs",
+              "RelativeToolTip": "QuizSystem.ConsoleRunner\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAgwBkAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T11:08:16.806Z",
               "EditorCaption": ""
             }
           ]

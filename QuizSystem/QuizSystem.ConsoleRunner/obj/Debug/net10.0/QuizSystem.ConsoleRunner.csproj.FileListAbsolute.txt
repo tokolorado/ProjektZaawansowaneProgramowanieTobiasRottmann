@@ -14,3 +14,6 @@ C:\Users\tobia\Documents\GitHub\ProjektZaawansowaneProgramowanie\QuizSystem\Quiz
 C:\Users\tobia\Documents\GitHub\ProjektZaawansowaneProgramowanie\QuizSystem\QuizSystem.ConsoleRunner\obj\Debug\net10.0\refint\QuizSystem.ConsoleRunner.dll
 C:\Users\tobia\Documents\GitHub\ProjektZaawansowaneProgramowanie\QuizSystem\QuizSystem.ConsoleRunner\obj\Debug\net10.0\QuizSystem.ConsoleRunner.pdb
 C:\Users\tobia\Documents\GitHub\ProjektZaawansowaneProgramowanie\QuizSystem\QuizSystem.ConsoleRunner\obj\Debug\net10.0\ref\QuizSystem.ConsoleRunner.dll
+C:\Users\tobia\Documents\GitHub\ProjektZaawansowaneProgramowanie\QuizSystem\QuizSystem.ConsoleRunner\bin\Debug\net10.0\QuizSystem.ConsoleRunner.exe
+C:\Users\tobia\Documents\GitHub\ProjektZaawansowaneProgramowanie\QuizSystem\QuizSystem.ConsoleRunner\bin\Debug\net10.0\QuizSystem.ConsoleRunner.runtimeconfig.json
+C:\Users\tobia\Documents\GitHub\ProjektZaawansowaneProgramowanie\QuizSystem\QuizSystem.ConsoleRunner\obj\Debug\net10.0\QuizSystem.ConsoleRunner.genruntimeconfig.cache
