@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("QuizSystem.Core")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("QuizSystem.ConsoleRunner")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c6e6ef06b24031afdd0144f0948072209859ab03")]
-[assembly: System.Reflection.AssemblyProductAttribute("QuizSystem.Core")]
-[assembly: System.Reflection.AssemblyTitleAttribute("QuizSystem.Core")]
+[assembly: System.Reflection.AssemblyProductAttribute("QuizSystem.ConsoleRunner")]
+[assembly: System.Reflection.AssemblyTitleAttribute("QuizSystem.ConsoleRunner")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Von der MSBuild WriteCodeFragment-Klasse generiert.

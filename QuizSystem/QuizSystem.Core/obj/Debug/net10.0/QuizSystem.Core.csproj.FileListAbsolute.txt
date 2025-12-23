@@ -9,3 +9,15 @@ C:\Users\tobia\source\repos\QuizSystem\QuizSystem.Core\obj\Debug\net10.0\QuizSys
 C:\Users\tobia\source\repos\QuizSystem\QuizSystem.Core\obj\Debug\net10.0\refint\QuizSystem.Core.dll
 C:\Users\tobia\source\repos\QuizSystem\QuizSystem.Core\obj\Debug\net10.0\QuizSystem.Core.pdb
 C:\Users\tobia\source\repos\QuizSystem\QuizSystem.Core\obj\Debug\net10.0\ref\QuizSystem.Core.dll
+C:\Users\tobia\Documents\GitHub\ProjektZaawansowaneProgramowanie\QuizSystem\QuizSystem.Core\bin\Debug\net10.0\QuizSystem.Core.deps.json
+C:\Users\tobia\Documents\GitHub\ProjektZaawansowaneProgramowanie\QuizSystem\QuizSystem.Core\bin\Debug\net10.0\QuizSystem.Core.dll
+C:\Users\tobia\Documents\GitHub\ProjektZaawansowaneProgramowanie\QuizSystem\QuizSystem.Core\bin\Debug\net10.0\QuizSystem.Core.pdb
+C:\Users\tobia\Documents\GitHub\ProjektZaawansowaneProgramowanie\QuizSystem\QuizSystem.Core\obj\Debug\net10.0\QuizSystem.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tobia\Documents\GitHub\ProjektZaawansowaneProgramowanie\QuizSystem\QuizSystem.Core\obj\Debug\net10.0\QuizSystem.Core.AssemblyInfoInputs.cache
+C:\Users\tobia\Documents\GitHub\ProjektZaawansowaneProgramowanie\QuizSystem\QuizSystem.Core\obj\Debug\net10.0\QuizSystem.Core.AssemblyInfo.cs
+C:\Users\tobia\Documents\GitHub\ProjektZaawansowaneProgramowanie\QuizSystem\QuizSystem.Core\obj\Debug\net10.0\QuizSystem.Core.csproj.CoreCompileInputs.cache
+C:\Users\tobia\Documents\GitHub\ProjektZaawansowaneProgramowanie\QuizSystem\QuizSystem.Core\obj\Debug\net10.0\QuizSystem.Core.sourcelink.json
+C:\Users\tobia\Documents\GitHub\ProjektZaawansowaneProgramowanie\QuizSystem\QuizSystem.Core\obj\Debug\net10.0\QuizSystem.Core.dll
+C:\Users\tobia\Documents\GitHub\ProjektZaawansowaneProgramowanie\QuizSystem\QuizSystem.Core\obj\Debug\net10.0\refint\QuizSystem.Core.dll
+C:\Users\tobia\Documents\GitHub\ProjektZaawansowaneProgramowanie\QuizSystem\QuizSystem.Core\obj\Debug\net10.0\QuizSystem.Core.pdb
+C:\Users\tobia\Documents\GitHub\ProjektZaawansowaneProgramowanie\QuizSystem\QuizSystem.Core\obj\Debug\net10.0\ref\QuizSystem.Core.dll
