@@ -1,5 +1,6 @@
 ﻿using QuizSystem.Core.Application;
 using QuizSystem.Core.Domain.Interfaces;
+using QuizSystem.ConsoleRunner.ConsoleUI;
 
 namespace QuizSystem.ConsoleRunner
 {
@@ -7,30 +8,15 @@ namespace QuizSystem.ConsoleRunner
     {
         static void Main(string[] args)
         {
-            // 1) Tworzymy przykładowy quiz z fabryki danych demo.
+            // Tworzymy quiz demo.
             IQuiz quiz = QuizFactory.CreateSampleQuiz();
 
-            // 2) Wyświetlamy podstawowe informacje o quizie.
-            Console.WriteLine("=== QUIZ DEMO ===");
-            Console.WriteLine($"Tytuł: {quiz.Title}");
-            Console.WriteLine($"Opis: {quiz.Description}");
+            // Uruchamiamy quiz w konsoli.
+            var runner = new ConsoleQuizRunner();
+            runner.Run(quiz);
+
             Console.WriteLine();
-
-            // 3) Wypisujemy pytania oraz odpowiedzi.
-            foreach (var question in quiz.Questions)
-            {
-                Console.WriteLine($"Pytanie: {question.Content}");
-
-                foreach (var answer in question.Answers)
-                {
-                    Console.WriteLine($" - {answer.Text} (Id: {answer.Id})");
-                }
-
-                Console.WriteLine();
-            }
-
-            // 4) To tylko test domeny. UI zrobimy w WPF w następnym etapie.
-            Console.WriteLine("Domena działa. Następny krok: rozwiązywanie quizu w konsoli.");
+            Console.WriteLine("Następny krok: WPF (desktop UI).");
         }
     }
 }
