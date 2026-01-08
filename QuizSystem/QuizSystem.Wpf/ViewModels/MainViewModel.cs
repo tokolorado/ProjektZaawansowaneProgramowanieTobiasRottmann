@@ -2,6 +2,8 @@
 using QuizSystem.Core.Domain.Interfaces;
 using QuizSystem.Wpf.Infrastructure;
 
+private readonly IDialogService _dialogService;
+
 namespace QuizSystem.Wpf.ViewModels
 {
     /// <summary>
@@ -17,6 +19,9 @@ namespace QuizSystem.Wpf.ViewModels
 
         private bool _isFinished;
         private int _score;
+
+       
+
 
         public string Title => _quiz.Title;
         public string? Description => _quiz.Description;
@@ -59,8 +64,10 @@ namespace QuizSystem.Wpf.ViewModels
         public RelayCommand CancelCommand { get; }
         public RelayCommand CloseAppCommand { get; }
 
-        public MainViewModel()
+        public MainViewModel(IDialogService dialogService)
         {
+            _dialogService = dialogService;
+
             // Na start bierzemy quiz demo.
             _quiz = QuizFactory.CreateSampleQuiz();
 
@@ -84,6 +91,8 @@ namespace QuizSystem.Wpf.ViewModels
         private bool CanGoNext() => !IsFinished && _currentIndex < _questions.Count - 1;
         private bool CanGoPrev() => !IsFinished && _currentIndex > 0;
         private bool CanFinish() => !IsFinished && _questions.Count > 0;
+
+
 
         private void Next()
         {
@@ -152,8 +161,18 @@ namespace QuizSystem.Wpf.ViewModels
 
         private void Cancel()
         {
+            // 1) Pytamy użytkownika czy na pewno chce wyjść
+            bool confirm = _dialogService.Confirm(
+                "Wyjście z quizu",
+                "Czy na pewno chcesz wyjść z quizu?\nPostęp zostanie utracony.");
 
+            if (!confirm)
+                return;
+
+            // 2) Zamykamy aplikację (lub później wrócimy do ekranu wyboru quizu)
+            System.Windows.Application.Current.Shutdown();
         }
+
 
         private bool CanCancel() => !IsFinished;
 
