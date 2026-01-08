@@ -11,7 +11,7 @@ namespace QuizSystem.Wpf.ViewModels
     /// </summary>
     public class MainViewModel : ObservableObject
     {
-        private readonly IQuiz _quiz;
+        private IQuiz _quiz;
         private readonly List<QuestionViewModel> _questions;
 
         private int _currentIndex;
@@ -21,6 +21,46 @@ namespace QuizSystem.Wpf.ViewModels
         private int _score;
 
         private readonly IDialogService _dialogService;
+
+
+        private List<QuizListItemViewModel> _allQuizzes;
+        private List<QuizListItemViewModel> _filteredQuizzes;
+        private QuizListItemViewModel? _selectedQuiz;
+        private string _searchText = string.Empty;
+        private bool _isInMenu = true;
+
+        public bool IsInMenu
+        {
+            get => _isInMenu;
+            private set => SetProperty(ref _isInMenu, value);
+        }
+
+        public bool IsInQuiz => !IsInMenu;
+
+        public List<QuizListItemViewModel> Quizzes
+        {
+            get => _filteredQuizzes;
+            private set => SetProperty(ref _filteredQuizzes, value);
+        }
+
+        public QuizListItemViewModel? SelectedQuiz
+        {
+            get => _selectedQuiz;
+            set => SetProperty(ref _selectedQuiz, value);
+        }
+
+        public string SearchText
+        {
+            get => _searchText;
+            set
+            {
+                if (SetProperty(ref _searchText, value))
+                {
+                    ApplyQuizFilter();
+                }
+            }
+        }
+
 
 
         public string Title => _quiz.Title;
@@ -57,6 +97,8 @@ namespace QuizSystem.Wpf.ViewModels
             }
         }
 
+
+        public RelayCommand StartQuizCommand { get; }
         public RelayCommand NextCommand { get; }
         public RelayCommand PrevCommand { get; }
         public RelayCommand FinishCommand { get; }
@@ -79,6 +121,7 @@ namespace QuizSystem.Wpf.ViewModels
             _isFinished = false;
             _score = 0;
 
+            StartQuizCommand = new RelayCommand(StartSelectedQuiz, CanStartSelectedQuiz);
             NextCommand = new RelayCommand(Next, CanGoNext);
             PrevCommand = new RelayCommand(Prev, CanGoPrev);
             FinishCommand = new RelayCommand(Finish, CanFinish);
@@ -93,6 +136,22 @@ namespace QuizSystem.Wpf.ViewModels
         private bool CanFinish() => !IsFinished && _questions.Count > 0;
 
 
+
+
+
+        private bool CanStartSelectedQuiz() => SelectedQuiz != null;
+
+        private void StartSelectedQuiz()
+        {
+            if (SelectedQuiz == null)
+                return;
+
+            LoadQuiz(SelectedQuiz.Quiz);
+            IsInMenu = false;
+
+            OnPropertyChanged(nameof(IsInQuiz));
+            RaiseButtons();
+        }
 
         private void Next()
         {
@@ -192,5 +251,33 @@ namespace QuizSystem.Wpf.ViewModels
             FinishCommand.RaiseCanExecuteChanged();
             CancelCommand.RaiseCanExecuteChanged();
         }
+
+        _allQuizzes = QuizFactory.CreateSampleQuizzes()
+    .Select(q => new QuizListItemViewModel(q))
+    .ToList();
+
+        _filteredQuizzes = _allQuizzes.ToList();
+Quizzes = _filteredQuizzes;
+
+
+        private void ApplyQuizFilter()
+        {
+            var text = (SearchText ?? string.Empty).Trim();
+
+            var query = _allQuizzes.AsEnumerable();
+
+            if (!string.IsNullOrWhiteSpace(text))
+            {
+                query = query.Where(q =>
+                    q.Title.Contains(text, StringComparison.OrdinalIgnoreCase) ||
+                    (q.Description != null && q.Description.Contains(text, StringComparison.OrdinalIgnoreCase)));
+            }
+
+            // przykład dodatkowego LINQ: sortowanie
+            query = query.OrderBy(q => q.Title);
+
+            Quizzes = query.ToList();
+        }
+
     }
 }
