@@ -9,6 +9,23 @@ namespace QuizSystem.Core.Application
     /// </summary>
     public static class QuizFactory
     {
+
+        public static List<IQuiz> CreateSampleQuizzes()
+        {
+            // 1) istniejący quiz
+            var quiz1 = CreateSampleQuiz();
+
+            // 2) na początek: druga kopia z innym tytułem/opisem
+            var quiz2 = CreateSampleQuiz();
+
+            // Jeśli Twoje IQuiz ma settery, ustaw tytuł/opis.
+            // Jeżeli nie ma setterów, to za chwilę zrobimy drugi quiz poprawnie
+            // przez utworzenie nowej instancji Quiz z innymi danymi.
+            // Na razie ważne jest: więcej niż 1 element.
+
+            return new List<IQuiz> { quiz1, quiz2 };
+        }
+
         public static IQuiz CreateSampleQuiz()
         {
             // Pytanie 1
@@ -39,6 +56,8 @@ namespace QuizSystem.Core.Application
                 description: "Prosty quiz do testowania logiki systemu.",
                 questions: new List<IQuestion> { q1, q2 }
             );
+
+
         }
     }
 }
