@@ -3,10 +3,92 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:QuizSystem.Wpf"
+        xmlns:vm="clr-namespace:QuizSystem.Wpf.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="QuizSystem" Height="520" Width="820">
 
+    <Window.DataContext>
+        <vm:MainViewModel />
+    </Window.DataContext>
+
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Nagłówek -->
+        <TextBlock Grid.Row="0"
+                   Text="{Binding Title}"
+                   FontSize="24"
+                   FontWeight="Bold" />
+
+        <TextBlock Grid.Row="1"
+                   Margin="0,6,0,12"
+                   Text="{Binding Description}"
+                   Opacity="0.8"
+                   TextWrapping="Wrap"/>
+
+        <!-- Treść pytania + odpowiedzi -->
+        <Border Grid.Row="2" Padding="12" BorderBrush="Gray" BorderThickness="1" CornerRadius="6">
+            <StackPanel>
+                <TextBlock Text="{Binding CurrentQuestion.Content}"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           TextWrapping="Wrap"
+                           Margin="0,0,0,12"/>
+
+                <ItemsControl ItemsSource="{Binding CurrentQuestion.Options}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox Content="{Binding Text}"
+                                      IsChecked="{Binding IsSelected, Mode=TwoWay}"
+                                      Margin="0,4,0,4"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </Border>
+
+        <!-- Nawigacja -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,12,0,0">
+            <TextBlock VerticalAlignment="Center"
+                       Text="{Binding CurrentNumber}"
+                       FontWeight="Bold"/>
+            <TextBlock VerticalAlignment="Center" Text="/"/>
+            <TextBlock VerticalAlignment="Center" Text="{Binding TotalQuestions}" />
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="Poprzednie"
+                        Margin="16,0,0,0"
+                        Command="{Binding PrevCommand}" />
+
+                <Button Content="Następne"
+                        Margin="8,0,0,0"
+                        Command="{Binding NextCommand}" />
+
+                <Button Content="Zakończ"
+                        Margin="8,0,0,0"
+                        Command="{Binding FinishCommand}" />
+
+                <Button Content="Restart"
+                        Margin="8,0,0,0"
+                        Command="{Binding RestartCommand}" />
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Wynik -->
+        <Border Grid.Row="4" Margin="0,12,0,0" Padding="10" BorderBrush="Gray" BorderThickness="1" CornerRadius="6">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Wynik: " FontWeight="Bold"/>
+                <TextBlock Text="{Binding Score}" />
+                <TextBlock Text=" / " />
+                <TextBlock Text="{Binding TotalQuestions}" />
+                <TextBlock Text="  (kliknij Zakończ, aby policzyć)" Margin="12,0,0,0" Opacity="0.7"/>
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>
