@@ -3,25 +3,87 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:vm="clr-namespace:QuizSystem.Wpf.ViewModels"
         mc:Ignorable="d"
         Title="QuizSystem" Height="520" Width="820">
-
-
 
     <Grid Margin="16">
 
         <!-- ========================= -->
-        <!-- PANEL 1: QUIZ (IsFinished = false) -->
+        <!-- PANEL 0: MENU (IsInMenu = true) -->
+        <!-- ========================= -->
+        <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="8" Padding="16">
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsInMenu}" Value="True">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+
+            <StackPanel>
+                <TextBlock Text="Wybierz quiz"
+                           FontSize="24"
+                           FontWeight="Bold"
+                           Margin="0,0,0,12"/>
+
+                <TextBlock Text="Szukaj:"
+                           Opacity="0.75"
+                           Margin="0,0,0,4"/>
+
+                <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
+                         Margin="0,0,0,12"/>
+
+                <ListBox ItemsSource="{Binding Quizzes}"
+                         SelectedItem="{Binding SelectedQuiz}"
+                         Height="260">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="LightGray"
+                                    BorderThickness="1"
+                                    CornerRadius="4"
+                                    Padding="8"
+                                    Margin="0,4">
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Title}" FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding Description}" Opacity="0.7" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding QuestionCount, StringFormat=Liczba pytań: {0}}"
+                                               FontSize="11" Opacity="0.6"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <Button Content="Rozpocznij quiz"
+                        Margin="0,12,0,0"
+                        Width="180"
+                        HorizontalAlignment="Right"
+                        Command="{Binding StartQuizCommand}"/>
+            </StackPanel>
+        </Border>
+
+        <!-- ========================= -->
+        <!-- PANEL 1: QUIZ (IsInMenu=false i IsFinished=false) -->
         <!-- ========================= -->
         <Border>
             <Border.Style>
                 <Style TargetType="Border">
                     <Setter Property="Visibility" Value="Visible"/>
                     <Style.Triggers>
+
+                        <!-- jeśli jesteśmy w menu -> quiz znika -->
+                        <DataTrigger Binding="{Binding IsInMenu}" Value="True">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+
+                        <!-- jeśli quiz zakończony -> quiz znika -->
                         <DataTrigger Binding="{Binding IsFinished}" Value="True">
                             <Setter Property="Visibility" Value="Collapsed"/>
                         </DataTrigger>
+
                     </Style.Triggers>
                 </Style>
             </Border.Style>
@@ -35,7 +97,6 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <!-- Nagłówek -->
                 <TextBlock Grid.Row="0"
                            Text="{Binding Title}"
                            FontSize="24"
@@ -47,7 +108,6 @@
                            Opacity="0.8"
                            TextWrapping="Wrap"/>
 
-                <!-- Treść pytania + odpowiedzi -->
                 <Border Grid.Row="2" Padding="12" BorderBrush="Gray" BorderThickness="1" CornerRadius="6">
                     <StackPanel>
                         <TextBlock Text="{Binding CurrentQuestion.Content}"
@@ -68,7 +128,6 @@
                     </StackPanel>
                 </Border>
 
-                <!-- Nawigacja -->
                 <Grid Grid.Row="3" Margin="0,12,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -76,38 +135,20 @@
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Orientation="Horizontal" Grid.Column="0" VerticalAlignment="Center">
-                        <TextBlock VerticalAlignment="Center"
-                                   Text="{Binding CurrentNumber}"
-                                   FontWeight="Bold"/>
-                        <TextBlock VerticalAlignment="Center" Text="/"/>
-                        <TextBlock VerticalAlignment="Center" Text="{Binding TotalQuestions}" />
+                        <TextBlock Text="{Binding CurrentNumber}" FontWeight="Bold"/>
+                        <TextBlock Text="/"/>
+                        <TextBlock Text="{Binding TotalQuestions}"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
-                        <Button Content="Poprzednie"
-                                Margin="16,0,0,0"
-                                Command="{Binding PrevCommand}" />
-
-                        <Button Content="Następne"
-                                Margin="8,0,0,0"
-                                Command="{Binding NextCommand}" />
-
-                        <Button Content="Zakończ"
-                                Margin="8,0,0,0"
-                                Command="{Binding FinishCommand}" />
-
-                        <Button Content="Restart"
-                                Margin="8,0,0,0"
-                                Command="{Binding RestartCommand}" />
-                        
-                        <Button Content="Wyjdź"
-                                Margin="8,0,0,0"
-                                Command="{Binding CancelCommand}" />
-
+                        <Button Content="Poprzednie" Margin="16,0,0,0" Command="{Binding PrevCommand}" />
+                        <Button Content="Następne" Margin="8,0,0,0" Command="{Binding NextCommand}" />
+                        <Button Content="Zakończ" Margin="8,0,0,0" Command="{Binding FinishCommand}" />
+                        <Button Content="Restart" Margin="8,0,0,0" Command="{Binding RestartCommand}" />
+                        <Button Content="Wyjdź" Margin="8,0,0,0" Command="{Binding CancelCommand}" />
                     </StackPanel>
                 </Grid>
 
-                <!-- Wynik -->
                 <Border Grid.Row="4" Margin="0,12,0,0" Padding="10" BorderBrush="Gray" BorderThickness="1" CornerRadius="6">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Wynik: " FontWeight="Bold"/>
@@ -121,16 +162,23 @@
         </Border>
 
         <!-- ========================= -->
-        <!-- PANEL 2: KONIEC (IsFinished = true) -->
+        <!-- PANEL 2: KONIEC (IsFinished=true i IsInMenu=false) -->
         <!-- ========================= -->
         <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="8" Padding="18">
             <Border.Style>
                 <Style TargetType="Border">
                     <Setter Property="Visibility" Value="Collapsed"/>
                     <Style.Triggers>
+
+                        <!-- jeśli menu -> koniec też ukryty -->
+                        <DataTrigger Binding="{Binding IsInMenu}" Value="True">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+
                         <DataTrigger Binding="{Binding IsFinished}" Value="True">
                             <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
+
                     </Style.Triggers>
                 </Style>
             </Border.Style>

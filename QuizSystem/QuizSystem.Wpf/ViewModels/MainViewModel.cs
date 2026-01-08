@@ -49,7 +49,13 @@ namespace QuizSystem.Wpf.ViewModels
         public QuizListItemViewModel? SelectedQuiz
         {
             get => _selectedQuiz;
-            set => SetProperty(ref _selectedQuiz, value);
+            set
+            {
+                if (SetProperty(ref _selectedQuiz, value))
+                {
+                    StartQuizCommand.RaiseCanExecuteChanged();
+                }
+            }
         }
 
         public string SearchText
@@ -106,6 +112,10 @@ namespace QuizSystem.Wpf.ViewModels
         public MainViewModel(IDialogService dialogService)
         {
             _dialogService = dialogService;
+
+            IsInMenu = true;
+            OnPropertyChanged(nameof(IsInQuiz));
+
 
             // Na start bierzemy quiz demo.
             _quiz = QuizFactory.CreateSampleQuiz();
@@ -270,6 +280,28 @@ namespace QuizSystem.Wpf.ViewModels
 
             query = query.OrderBy(q => q.Title);
             Quizzes = query.ToList();
+        }
+        private void LoadQuiz(IQuiz quiz)
+        {
+            _quiz = quiz;
+
+            _questions = _quiz.Questions
+                .Select(q => new QuestionViewModel(q))
+                .ToList();
+
+            _currentIndex = 0;
+            CurrentQuestion = _questions[_currentIndex];
+
+            Score = 0;
+            IsFinished = false;
+
+            OnPropertyChanged(nameof(Title));
+            OnPropertyChanged(nameof(Description));
+            OnPropertyChanged(nameof(TotalQuestions));
+            OnPropertyChanged(nameof(CurrentNumber));
+            OnPropertyChanged(nameof(FinishedMessage));
+
+            RaiseButtons();
         }
 
     }
