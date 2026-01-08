@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{653E3798-90E4-4D80-A09F-54D21483195B}|QuizSystem.Wpf\\QuizSystem.Wpf.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.wpf\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{653E3798-90E4-4D80-A09F-54D21483195B}|QuizSystem.Wpf\\QuizSystem.Wpf.csproj|solutionrelative:quizsystem.wpf\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{653E3798-90E4-4D80-A09F-54D21483195B}|QuizSystem.Wpf\\QuizSystem.Wpf.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.wpf\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{653E3798-90E4-4D80-A09F-54D21483195B}|QuizSystem.Wpf\\QuizSystem.Wpf.csproj|solutionrelative:quizsystem.wpf\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{653E3798-90E4-4D80-A09F-54D21483195B}|QuizSystem.Wpf\\QuizSystem.Wpf.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.wpf\\infrastructure\\wpfdialogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{653E3798-90E4-4D80-A09F-54D21483195B}|QuizSystem.Wpf\\QuizSystem.Wpf.csproj|solutionrelative:quizsystem.wpf\\infrastructure\\wpfdialogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{653E3798-90E4-4D80-A09F-54D21483195B}|QuizSystem.Wpf\\QuizSystem.Wpf.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.wpf\\infrastructure\\idialogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{653E3798-90E4-4D80-A09F-54D21483195B}|QuizSystem.Wpf\\QuizSystem.Wpf.csproj|solutionrelative:quizsystem.wpf\\infrastructure\\idialogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{653E3798-90E4-4D80-A09F-54D21483195B}|QuizSystem.Wpf\\QuizSystem.Wpf.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.wpf\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{653E3798-90E4-4D80-A09F-54D21483195B}|QuizSystem.Wpf\\QuizSystem.Wpf.csproj|solutionrelative:quizsystem.wpf\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{653E3798-90E4-4D80-A09F-54D21483195B}|QuizSystem.Wpf\\QuizSystem.Wpf.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.wpf\\views\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,24 +34,50 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "WpfDialogService.cs",
+              "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Wpf\\Infrastructure\\WpfDialogService.cs",
+              "RelativeDocumentMoniker": "QuizSystem.Wpf\\Infrastructure\\WpfDialogService.cs",
+              "ToolTip": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Wpf\\Infrastructure\\WpfDialogService.cs",
+              "RelativeToolTip": "QuizSystem.Wpf\\Infrastructure\\WpfDialogService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-08T11:20:48.925Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IDialogService.cs",
+              "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Wpf\\Infrastructure\\IDialogService.cs",
+              "RelativeDocumentMoniker": "QuizSystem.Wpf\\Infrastructure\\IDialogService.cs",
+              "ToolTip": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Wpf\\Infrastructure\\IDialogService.cs",
+              "RelativeToolTip": "QuizSystem.Wpf\\Infrastructure\\IDialogService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-08T11:20:18.922Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "MainViewModel.cs",
               "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Wpf\\ViewModels\\MainViewModel.cs",
               "RelativeDocumentMoniker": "QuizSystem.Wpf\\ViewModels\\MainViewModel.cs",
               "ToolTip": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Wpf\\ViewModels\\MainViewModel.cs",
               "RelativeToolTip": "QuizSystem.Wpf\\ViewModels\\MainViewModel.cs",
-              "ViewState": "AgIAAIIAAAAAAAAAAAAwwK0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAJMAAAAAAAAAAAAowK8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-08T10:58:42.369Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Wpf\\Views\\MainWindow.xaml",
               "RelativeDocumentMoniker": "QuizSystem.Wpf\\Views\\MainWindow.xaml",
@@ -55,7 +89,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Wpf\\Views\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "QuizSystem.Wpf\\Views\\MainWindow.xaml.cs",
@@ -68,7 +102,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "App.xaml",
               "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Wpf\\App.xaml",
               "RelativeDocumentMoniker": "QuizSystem.Wpf\\App.xaml",

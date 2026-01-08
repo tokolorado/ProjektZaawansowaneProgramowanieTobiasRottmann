@@ -2,7 +2,7 @@
 using QuizSystem.Core.Domain.Interfaces;
 using QuizSystem.Wpf.Infrastructure;
 
-private readonly IDialogService _dialogService;
+
 
 namespace QuizSystem.Wpf.ViewModels
 {
@@ -20,7 +20,7 @@ namespace QuizSystem.Wpf.ViewModels
         private bool _isFinished;
         private int _score;
 
-       
+        private readonly IDialogService _dialogService;
 
 
         public string Title => _quiz.Title;

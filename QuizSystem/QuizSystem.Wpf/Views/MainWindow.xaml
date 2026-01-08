@@ -7,9 +7,7 @@
         mc:Ignorable="d"
         Title="QuizSystem" Height="520" Width="820">
 
-    <Window.DataContext>
-        <vm:MainViewModel />
-    </Window.DataContext>
+
 
     <Grid Margin="16">
 
