@@ -99,6 +99,11 @@
                         <Button Content="Restart"
                                 Margin="8,0,0,0"
                                 Command="{Binding RestartCommand}" />
+                        
+                        <Button Content="Wyjdź"
+                                Margin="8,0,0,0"
+                                Command="{Binding CancelCommand}" />
+
                     </StackPanel>
                 </Grid>
 
