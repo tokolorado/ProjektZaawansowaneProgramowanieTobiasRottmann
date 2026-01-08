@@ -41,6 +41,16 @@ namespace QuizSystem.Wpf.ViewModels
             get => _score;
             private set => SetProperty(ref _score, value);
         }
+        public string FinishedMessage
+        {
+            get
+            {
+                if (!IsFinished)
+                    return string.Empty;
+
+                return $"Koniec! Twój wynik to {Score} / {TotalQuestions}.";
+            }
+        }
 
         public RelayCommand NextCommand { get; }
         public RelayCommand PrevCommand { get; }
@@ -107,6 +117,8 @@ namespace QuizSystem.Wpf.ViewModels
 
             Score = _quiz.CalculateScore(userAnswers);
             IsFinished = true;
+            OnPropertyChanged(nameof(FinishedMessage));
+
 
             RaiseButtons();
         }
@@ -124,6 +136,8 @@ namespace QuizSystem.Wpf.ViewModels
 
             Score = 0;
             IsFinished = false;
+            OnPropertyChanged(nameof(FinishedMessage));
+
 
             _currentIndex = 0;
             CurrentQuestion = _questions[_currentIndex];
