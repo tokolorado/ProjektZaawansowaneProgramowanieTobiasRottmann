@@ -76,7 +76,7 @@ namespace QuizSystem.Wpf.ViewModels
             PrevCommand = new RelayCommand(Prev, CanGoPrev);
             FinishCommand = new RelayCommand(Finish, CanFinish);
             RestartCommand = new RelayCommand(Restart);
-            CancelCommand = new RelayCommand(Cancel);
+            CancelCommand = new RelayCommand(Cancel, CanCancel);
             CloseAppCommand = new RelayCommand(CloseApp);
 
         }
@@ -155,6 +155,9 @@ namespace QuizSystem.Wpf.ViewModels
 
         }
 
+        private bool CanCancel() => !IsFinished;
+
+
 
         private void CloseApp()
         {
@@ -168,6 +171,7 @@ namespace QuizSystem.Wpf.ViewModels
             NextCommand.RaiseCanExecuteChanged();
             PrevCommand.RaiseCanExecuteChanged();
             FinishCommand.RaiseCanExecuteChanged();
+            CancelCommand.RaiseCanExecuteChanged();
         }
     }
 }
