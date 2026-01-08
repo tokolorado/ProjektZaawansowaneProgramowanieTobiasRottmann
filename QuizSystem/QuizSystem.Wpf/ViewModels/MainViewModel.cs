@@ -124,7 +124,6 @@ namespace QuizSystem.Wpf.ViewModels
             IsFinished = true;
             OnPropertyChanged(nameof(FinishedMessage));
 
-
             RaiseButtons();
         }
 

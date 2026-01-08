@@ -12,83 +12,149 @@
     </Window.DataContext>
 
     <Grid Margin="16">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
 
-        <!-- Nagłówek -->
-        <TextBlock Grid.Row="0"
-                   Text="{Binding Title}"
-                   FontSize="24"
-                   FontWeight="Bold" />
+        <!-- ========================= -->
+        <!-- PANEL 1: QUIZ (IsFinished = false) -->
+        <!-- ========================= -->
+        <Border>
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Setter Property="Visibility" Value="Visible"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsFinished}" Value="True">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
 
-        <TextBlock Grid.Row="1"
-                   Margin="0,6,0,12"
-                   Text="{Binding Description}"
-                   Opacity="0.8"
-                   TextWrapping="Wrap"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-        <!-- Treść pytania + odpowiedzi -->
-        <Border Grid.Row="2" Padding="12" BorderBrush="Gray" BorderThickness="1" CornerRadius="6">
+                <!-- Nagłówek -->
+                <TextBlock Grid.Row="0"
+                           Text="{Binding Title}"
+                           FontSize="24"
+                           FontWeight="Bold" />
+
+                <TextBlock Grid.Row="1"
+                           Margin="0,6,0,12"
+                           Text="{Binding Description}"
+                           Opacity="0.8"
+                           TextWrapping="Wrap"/>
+
+                <!-- Treść pytania + odpowiedzi -->
+                <Border Grid.Row="2" Padding="12" BorderBrush="Gray" BorderThickness="1" CornerRadius="6">
+                    <StackPanel>
+                        <TextBlock Text="{Binding CurrentQuestion.Content}"
+                                   FontSize="18"
+                                   FontWeight="SemiBold"
+                                   TextWrapping="Wrap"
+                                   Margin="0,0,0,12"/>
+
+                        <ItemsControl ItemsSource="{Binding CurrentQuestion.Options}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <CheckBox Content="{Binding Text}"
+                                              IsChecked="{Binding IsSelected, Mode=TwoWay}"
+                                              Margin="0,4,0,4"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </Border>
+
+                <!-- Nawigacja -->
+                <Grid Grid.Row="3" Margin="0,12,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Orientation="Horizontal" Grid.Column="0" VerticalAlignment="Center">
+                        <TextBlock VerticalAlignment="Center"
+                                   Text="{Binding CurrentNumber}"
+                                   FontWeight="Bold"/>
+                        <TextBlock VerticalAlignment="Center" Text="/"/>
+                        <TextBlock VerticalAlignment="Center" Text="{Binding TotalQuestions}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
+                        <Button Content="Poprzednie"
+                                Margin="16,0,0,0"
+                                Command="{Binding PrevCommand}" />
+
+                        <Button Content="Następne"
+                                Margin="8,0,0,0"
+                                Command="{Binding NextCommand}" />
+
+                        <Button Content="Zakończ"
+                                Margin="8,0,0,0"
+                                Command="{Binding FinishCommand}" />
+
+                        <Button Content="Restart"
+                                Margin="8,0,0,0"
+                                Command="{Binding RestartCommand}" />
+                    </StackPanel>
+                </Grid>
+
+                <!-- Wynik -->
+                <Border Grid.Row="4" Margin="0,12,0,0" Padding="10" BorderBrush="Gray" BorderThickness="1" CornerRadius="6">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Wynik: " FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Score}" />
+                        <TextBlock Text=" / " />
+                        <TextBlock Text="{Binding TotalQuestions}" />
+                        <TextBlock Text="  (kliknij Zakończ, aby policzyć)" Margin="12,0,0,0" Opacity="0.7"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- ========================= -->
+        <!-- PANEL 2: KONIEC (IsFinished = true) -->
+        <!-- ========================= -->
+        <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="8" Padding="18">
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsFinished}" Value="True">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+
             <StackPanel>
-                <TextBlock Text="{Binding CurrentQuestion.Content}"
-                           FontSize="18"
-                           FontWeight="SemiBold"
-                           TextWrapping="Wrap"
+                <TextBlock Text="✅ Quiz zakończony"
+                           FontSize="24"
+                           FontWeight="Bold"
                            Margin="0,0,0,12"/>
 
-                <ItemsControl ItemsSource="{Binding CurrentQuestion.Options}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <CheckBox Content="{Binding Text}"
-                                      IsChecked="{Binding IsSelected, Mode=TwoWay}"
-                                      Margin="0,4,0,4"/>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
+                <TextBlock Text="{Binding FinishedMessage}"
+                           FontSize="16"
+                           Margin="0,0,0,16"
+                           TextWrapping="Wrap"/>
+
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Restart"
+                            Width="120"
+                            Command="{Binding RestartCommand}"/>
+
+                    <Button Content="Zamknij aplikację"
+                            Width="160"
+                            Margin="12,0,0,0"
+                            Command="{Binding CloseAppCommand}"/>
+                </StackPanel>
             </StackPanel>
         </Border>
 
-        <!-- Nawigacja -->
-        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,12,0,0">
-            <TextBlock VerticalAlignment="Center"
-                       Text="{Binding CurrentNumber}"
-                       FontWeight="Bold"/>
-            <TextBlock VerticalAlignment="Center" Text="/"/>
-            <TextBlock VerticalAlignment="Center" Text="{Binding TotalQuestions}" />
-
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Content="Poprzednie"
-                        Margin="16,0,0,0"
-                        Command="{Binding PrevCommand}" />
-
-                <Button Content="Następne"
-                        Margin="8,0,0,0"
-                        Command="{Binding NextCommand}" />
-
-                <Button Content="Zakończ"
-                        Margin="8,0,0,0"
-                        Command="{Binding FinishCommand}" />
-
-                <Button Content="Restart"
-                        Margin="8,0,0,0"
-                        Command="{Binding RestartCommand}" />
-            </StackPanel>
-        </StackPanel>
-
-        <!-- Wynik -->
-        <Border Grid.Row="4" Margin="0,12,0,0" Padding="10" BorderBrush="Gray" BorderThickness="1" CornerRadius="6">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Wynik: " FontWeight="Bold"/>
-                <TextBlock Text="{Binding Score}" />
-                <TextBlock Text=" / " />
-                <TextBlock Text="{Binding TotalQuestions}" />
-                <TextBlock Text="  (kliknij Zakończ, aby policzyć)" Margin="12,0,0,0" Opacity="0.7"/>
-            </StackPanel>
-        </Border>
     </Grid>
 </Window>
