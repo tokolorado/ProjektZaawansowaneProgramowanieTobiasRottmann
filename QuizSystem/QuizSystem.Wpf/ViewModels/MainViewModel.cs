@@ -56,6 +56,8 @@ namespace QuizSystem.Wpf.ViewModels
         public RelayCommand PrevCommand { get; }
         public RelayCommand FinishCommand { get; }
         public RelayCommand RestartCommand { get; }
+        public RelayCommand CancelCommand { get; }
+        public RelayCommand CloseAppCommand { get; }
 
         public MainViewModel()
         {
@@ -74,6 +76,9 @@ namespace QuizSystem.Wpf.ViewModels
             PrevCommand = new RelayCommand(Prev, CanGoPrev);
             FinishCommand = new RelayCommand(Finish, CanFinish);
             RestartCommand = new RelayCommand(Restart);
+            CancelCommand = new RelayCommand(Cancel);
+            CloseAppCommand = new RelayCommand(CloseApp);
+
         }
 
         private bool CanGoNext() => !IsFinished && _currentIndex < _questions.Count - 1;
@@ -145,6 +150,19 @@ namespace QuizSystem.Wpf.ViewModels
 
             RaiseButtons();
         }
+
+        private void Cancel()
+        {
+
+        }
+
+
+        private void CloseApp()
+        {
+            // Zamknięcie całej aplikacji WPF
+            System.Windows.Application.Current.Shutdown();
+        }
+
 
         private void RaiseButtons()
         {
