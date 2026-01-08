@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\QuizSystem",
+    "\\QuizSystem\\QuizSystem.ConsoleRunner",
+    "\\QuizSystem\\QuizSystem.Core"
   ],
+  "SelectedNode": "\\QuizSystem\\QuizSystem.ConsoleRunner\\QuizSystem.ConsoleRunner.csproj",
   "PreviewInSolutionExplorer": false
 }

@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="QuizSystem.ConsoleRunner/QuizSystem.ConsoleRunner.csproj" Id="c4158e5f-3a57-434a-81b2-12f323dd7475" />
   <Project Path="QuizSystem.Core/QuizSystem.Core.csproj" />
+  <Project Path="QuizSystem.Wpf/QuizSystem.Wpf.csproj" Id="653e3798-90e4-4d80-a09f-54d21483195b" />
 </Solution>
