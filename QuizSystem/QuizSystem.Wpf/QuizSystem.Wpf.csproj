@@ -12,8 +12,4 @@
     <ProjectReference Include="..\QuizSystem.Core\QuizSystem.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\" />
-  </ItemGroup>
-
 </Project>
