@@ -3,8 +3,7 @@
 namespace QuizSystem.Wpf.ViewModels
 {
     /// <summary>
-    /// Element listy quizów do menu wyboru.
-    /// Trzyma referencję do quizu (IQuiz) + dane do wyświetlenia.
+    /// Element listy quizów w menu wyboru
     /// </summary>
     public class QuizListItemViewModel
     {

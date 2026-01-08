@@ -12,7 +12,13 @@ namespace QuizSystem.Wpf.ViewModels
     public class MainViewModel : ObservableObject
     {
         private IQuiz _quiz;
-        private readonly List<QuestionViewModel> _questions;
+        private List<QuestionViewModel> _questions;
+        private List<QuizListItemViewModel> _allQuizzes;
+        private List<QuizListItemViewModel> _filteredQuizzes;
+        private QuizListItemViewModel? _selectedQuiz;
+        private string _searchText = string.Empty;
+        private bool _isInMenu = true;
+
 
         private int _currentIndex;
         private QuestionViewModel _currentQuestion;
@@ -23,11 +29,8 @@ namespace QuizSystem.Wpf.ViewModels
         private readonly IDialogService _dialogService;
 
 
-        private List<QuizListItemViewModel> _allQuizzes;
-        private List<QuizListItemViewModel> _filteredQuizzes;
-        private QuizListItemViewModel? _selectedQuiz;
-        private string _searchText = string.Empty;
-        private bool _isInMenu = true;
+        public string Title => _quiz.Title;
+        public string? Description => _quiz.Description;
 
         public bool IsInMenu
         {
@@ -62,10 +65,6 @@ namespace QuizSystem.Wpf.ViewModels
         }
 
 
-
-        public string Title => _quiz.Title;
-        public string? Description => _quiz.Description;
-
         public QuestionViewModel CurrentQuestion
         {
             get => _currentQuestion;
@@ -96,8 +95,6 @@ namespace QuizSystem.Wpf.ViewModels
                 return $"Koniec! Twój wynik to {Score} / {TotalQuestions}.";
             }
         }
-
-
         public RelayCommand StartQuizCommand { get; }
         public RelayCommand NextCommand { get; }
         public RelayCommand PrevCommand { get; }
@@ -129,6 +126,14 @@ namespace QuizSystem.Wpf.ViewModels
             CancelCommand = new RelayCommand(Cancel, CanCancel);
             CloseAppCommand = new RelayCommand(CloseApp);
 
+            _allQuizzes = QuizFactory.CreateSampleQuizzes()
+                .Select(q => new QuizListItemViewModel(q))
+                .ToList();
+
+            _filteredQuizzes = _allQuizzes.ToList();
+            Quizzes = _filteredQuizzes;
+
+
         }
 
         private bool CanGoNext() => !IsFinished && _currentIndex < _questions.Count - 1;
@@ -136,22 +141,6 @@ namespace QuizSystem.Wpf.ViewModels
         private bool CanFinish() => !IsFinished && _questions.Count > 0;
 
 
-
-
-
-        private bool CanStartSelectedQuiz() => SelectedQuiz != null;
-
-        private void StartSelectedQuiz()
-        {
-            if (SelectedQuiz == null)
-                return;
-
-            LoadQuiz(SelectedQuiz.Quiz);
-            IsInMenu = false;
-
-            OnPropertyChanged(nameof(IsInQuiz));
-            RaiseButtons();
-        }
 
         private void Next()
         {
@@ -252,14 +241,19 @@ namespace QuizSystem.Wpf.ViewModels
             CancelCommand.RaiseCanExecuteChanged();
         }
 
-        _allQuizzes = QuizFactory.CreateSampleQuizzes()
-    .Select(q => new QuizListItemViewModel(q))
-    .ToList();
+        private bool CanStartSelectedQuiz() => SelectedQuiz != null;
 
-        _filteredQuizzes = _allQuizzes.ToList();
-Quizzes = _filteredQuizzes;
+        private void StartSelectedQuiz()
+        {
+            if (SelectedQuiz == null)
+                return;
 
+            LoadQuiz(SelectedQuiz.Quiz);
+            IsInMenu = false;
 
+            OnPropertyChanged(nameof(IsInQuiz));
+            RaiseButtons();
+        }
         private void ApplyQuizFilter()
         {
             var text = (SearchText ?? string.Empty).Trim();
@@ -270,14 +264,14 @@ Quizzes = _filteredQuizzes;
             {
                 query = query.Where(q =>
                     q.Title.Contains(text, StringComparison.OrdinalIgnoreCase) ||
-                    (q.Description != null && q.Description.Contains(text, StringComparison.OrdinalIgnoreCase)));
+                    (q.Description != null &&
+                     q.Description.Contains(text, StringComparison.OrdinalIgnoreCase)));
             }
 
-            // przykład dodatkowego LINQ: sortowanie
             query = query.OrderBy(q => q.Title);
-
             Quizzes = query.ToList();
         }
 
     }
+
 }
