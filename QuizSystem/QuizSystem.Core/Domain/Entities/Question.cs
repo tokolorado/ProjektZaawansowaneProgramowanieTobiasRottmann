@@ -7,6 +7,9 @@ namespace QuizSystem.Core.Domain.Entities
     /// </summary>
     public class Question : IQuestion
     {
+        // Przechowuję odpowiedzi jako prywatną listę, żeby kontrolować stan obiektu.
+        // Na zewnątrz wystawiam IReadOnlyList, żeby UI nie mogło przypadkiem "dopisać" odpowiedzi.
+
         private readonly List<IAnswer> _answers;
 
         public Guid Id { get; private set; }
@@ -24,6 +27,7 @@ namespace QuizSystem.Core.Domain.Entities
         // Normalne tworzenie w kodzie (generuje nowe Id)
         public Question(string content, IEnumerable<IAnswer> answers)
         {
+
             if (string.IsNullOrWhiteSpace(content))
                 throw new ArgumentException("Question content cannot be empty.", nameof(content));
 
@@ -32,8 +36,15 @@ namespace QuizSystem.Core.Domain.Entities
 
             var list = answers.ToList();
 
+            // Strategicznie: pytanie z 0/1 odpowiedzią nie jest realnym quizem.
+            // Taka walidacja zwiększa jakość danych i ułatwia późniejsze utrzymanie projektu.
+
             if (list.Count < 2)
                 throw new ArgumentException("Question must have at least 2 answers.", nameof(answers));
+
+            // Bez co najmniej jednej poprawnej odpowiedzi quiz nie ma sensu,
+            // dlatego to jest twarda reguła domeny (nie UI).
+
 
             if (!list.Any(a => a.IsCorrect))
                 throw new ArgumentException("Question must have at least one correct answer.", nameof(answers));
@@ -82,6 +93,11 @@ namespace QuizSystem.Core.Domain.Entities
                 .Where(a => a.IsCorrect)
                 .Select(a => a.Id)
                 .ToHashSet();
+
+            // SetEquals to prosty i czytelny sposób na "dokładne dopasowanie":
+            // użytkownik musi wybrać wszystkie poprawne i tylko poprawne.
+            // To minimalizuje błędy logiczne w porównaniu do ręcznych pętli.
+
 
             return chosen.SetEquals(correctIds);
         }

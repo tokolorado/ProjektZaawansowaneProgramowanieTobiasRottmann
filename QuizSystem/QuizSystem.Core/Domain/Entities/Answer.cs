@@ -7,11 +7,8 @@ namespace QuizSystem.Core.Domain.Entities
     /// </summary>
     /// 
 
-    // Utrzymuję walidację tu (w domenie), bo UI ani baza nie powinny decydować o jakości danych.
-    // Dzięki temu niezależnie od źródła (WPF/Web/DB) reguły są te same.
-
-
-   
+    // Tworzenie odpowiedzi w domenie: tu pilnuję jakości danych.
+    // Dzięki temu reguły obowiązują wszędzie (WPF/Web/DB), a nie tylko w UI.
 
     public class Answer : IAnswer
     {
@@ -30,6 +27,9 @@ namespace QuizSystem.Core.Domain.Entities
         // Normalne tworzenie w kodzie (generuje nowe Id)
         public Answer(string text, bool isCorrect)
         {
+            // Myślenie krytyczne: pusty tekst odpowiedzi oznacza pytanie bez sensu,
+            // więc blokuję takie przypadki od razu w domenie.
+
             if (string.IsNullOrWhiteSpace(text))
                 throw new ArgumentException("Answer text cannot be empty.", nameof(text));
 
@@ -38,10 +38,13 @@ namespace QuizSystem.Core.Domain.Entities
             IsCorrect = isCorrect;
         }
 
-        // ✅ Rehydrate: odtworzenie z bazy (z zachowaniem Id)
+        // Rehydrate: odtworzenie z bazy (z zachowaniem Id)
 
-        // Rehydrate istnieje, bo domena normalnie generuje Id (kontrola spójności),
-        // a przy odczycie z bazy musimy odtworzyć obiekt z konkretnym Id.
+        // Rehydrate to świadoma decyzja projektowa:
+        // normalnie domena generuje Id (kontrola spójności),
+        // ale przy odczycie z bazy muszę odtworzyć obiekt z istniejącym Id.
+        // To pozwala zachować "czystą domenę" bez publicznych setterów.
+
         private Answer(Guid id, string text, bool isCorrect)
         {
             if (id == Guid.Empty)
