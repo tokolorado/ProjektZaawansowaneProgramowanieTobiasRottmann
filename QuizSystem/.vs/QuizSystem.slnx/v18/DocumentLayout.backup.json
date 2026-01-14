@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{653E3798-90E4-4D80-A09F-54D21483195B}|QuizSystem.Wpf\\QuizSystem.Wpf.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.wpf\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{653E3798-90E4-4D80-A09F-54D21483195B}|QuizSystem.Wpf\\QuizSystem.Wpf.csproj|solutionrelative:quizsystem.wpf\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D77C2B92-5E7B-47F3-96B7-72C20E1B6B67}|QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.infrastructure\\repositories\\efquizrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D77C2B92-5E7B-47F3-96B7-72C20E1B6B67}|QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj|solutionrelative:quizsystem.infrastructure\\repositories\\efquizrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D77C2B92-5E7B-47F3-96B7-72C20E1B6B67}|QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.infrastructure\\data\\entities\\answerentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D77C2B92-5E7B-47F3-96B7-72C20E1B6B67}|QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj|solutionrelative:quizsystem.infrastructure\\data\\entities\\answerentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D77C2B92-5E7B-47F3-96B7-72C20E1B6B67}|QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.infrastructure\\data\\entities\\questionentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D77C2B92-5E7B-47F3-96B7-72C20E1B6B67}|QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj|solutionrelative:quizsystem.infrastructure\\data\\entities\\questionentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D77C2B92-5E7B-47F3-96B7-72C20E1B6B67}|QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.infrastructure\\data\\entities\\quizentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D77C2B92-5E7B-47F3-96B7-72C20E1B6B67}|QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj|solutionrelative:quizsystem.infrastructure\\data\\entities\\quizentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{72459C79-915F-3C3D-2FBE-B463020766B1}|QuizSystem.Core\\QuizSystem.Core.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.core\\domain\\entities\\quiz.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -29,6 +21,22 @@
     {
       "AbsoluteMoniker": "D:0:0:{72459C79-915F-3C3D-2FBE-B463020766B1}|QuizSystem.Core\\QuizSystem.Core.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.core\\domain\\entities\\answer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{72459C79-915F-3C3D-2FBE-B463020766B1}|QuizSystem.Core\\QuizSystem.Core.csproj|solutionrelative:quizsystem.core\\domain\\entities\\answer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{653E3798-90E4-4D80-A09F-54D21483195B}|QuizSystem.Wpf\\QuizSystem.Wpf.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.wpf\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{653E3798-90E4-4D80-A09F-54D21483195B}|QuizSystem.Wpf\\QuizSystem.Wpf.csproj|solutionrelative:quizsystem.wpf\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D77C2B92-5E7B-47F3-96B7-72C20E1B6B67}|QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.infrastructure\\data\\entities\\answerentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D77C2B92-5E7B-47F3-96B7-72C20E1B6B67}|QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj|solutionrelative:quizsystem.infrastructure\\data\\entities\\answerentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D77C2B92-5E7B-47F3-96B7-72C20E1B6B67}|QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.infrastructure\\data\\entities\\questionentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D77C2B92-5E7B-47F3-96B7-72C20E1B6B67}|QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj|solutionrelative:quizsystem.infrastructure\\data\\entities\\questionentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D77C2B92-5E7B-47F3-96B7-72C20E1B6B67}|QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.infrastructure\\data\\entities\\quizentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D77C2B92-5E7B-47F3-96B7-72C20E1B6B67}|QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj|solutionrelative:quizsystem.infrastructure\\data\\entities\\quizentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,24 +46,36 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AnswerEntity.cs",
-              "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Infrastructure\\Data\\Entities\\AnswerEntity.cs",
-              "RelativeDocumentMoniker": "QuizSystem.Infrastructure\\Data\\Entities\\AnswerEntity.cs",
-              "ToolTip": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Infrastructure\\Data\\Entities\\AnswerEntity.cs",
-              "RelativeToolTip": "QuizSystem.Infrastructure\\Data\\Entities\\AnswerEntity.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAA1wA4AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "MainViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Wpf\\ViewModels\\MainViewModel.cs",
+              "RelativeDocumentMoniker": "QuizSystem.Wpf\\ViewModels\\MainViewModel.cs",
+              "ToolTip": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Wpf\\ViewModels\\MainViewModel.cs",
+              "RelativeToolTip": "QuizSystem.Wpf\\ViewModels\\MainViewModel.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAIAwwEEAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-14T10:48:24.464Z",
+              "WhenOpened": "2026-01-14T11:10:54.114Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Wpf\\Views\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "QuizSystem.Wpf\\Views\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Wpf\\Views\\MainWindow.xaml",
+              "RelativeToolTip": "QuizSystem.Wpf\\Views\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-01-14T10:55:24.325Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "QuestionEntity.cs",
               "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Infrastructure\\Data\\Entities\\QuestionEntity.cs",
               "RelativeDocumentMoniker": "QuizSystem.Infrastructure\\Data\\Entities\\QuestionEntity.cs",
@@ -68,7 +88,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "QuizEntity.cs",
               "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Infrastructure\\Data\\Entities\\QuizEntity.cs",
               "RelativeDocumentMoniker": "QuizSystem.Infrastructure\\Data\\Entities\\QuizEntity.cs",
@@ -81,54 +101,67 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "Quiz.cs",
               "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Core\\Domain\\Entities\\Quiz.cs",
               "RelativeDocumentMoniker": "QuizSystem.Core\\Domain\\Entities\\Quiz.cs",
               "ToolTip": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Core\\Domain\\Entities\\Quiz.cs",
               "RelativeToolTip": "QuizSystem.Core\\Domain\\Entities\\Quiz.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAmwFsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADoAAAAAAAAAAAAwwGAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-14T10:47:49.309Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "Question.cs",
               "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Core\\Domain\\Entities\\Question.cs",
               "RelativeDocumentMoniker": "QuizSystem.Core\\Domain\\Entities\\Question.cs",
               "ToolTip": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Core\\Domain\\Entities\\Question.cs",
               "RelativeToolTip": "QuizSystem.Core\\Domain\\Entities\\Question.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAmwFkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADAAAAAAAAAAAAAowGMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-14T10:47:43.722Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "Answer.cs",
               "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Core\\Domain\\Entities\\Answer.cs",
               "RelativeDocumentMoniker": "QuizSystem.Core\\Domain\\Entities\\Answer.cs",
               "ToolTip": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Core\\Domain\\Entities\\Answer.cs",
               "RelativeToolTip": "QuizSystem.Core\\Domain\\Entities\\Answer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAmwDIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-14T10:36:24.45Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "EfQuizRepository.cs",
               "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Infrastructure\\Repositories\\EfQuizRepository.cs",
               "RelativeDocumentMoniker": "QuizSystem.Infrastructure\\Repositories\\EfQuizRepository.cs",
               "ToolTip": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Infrastructure\\Repositories\\EfQuizRepository.cs",
               "RelativeToolTip": "QuizSystem.Infrastructure\\Repositories\\EfQuizRepository.cs",
-              "ViewState": "AgIAADkAAAAAAAAAAAAmwGsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwDwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-14T09:43:40.548Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AnswerEntity.cs",
+              "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Infrastructure\\Data\\Entities\\AnswerEntity.cs",
+              "RelativeDocumentMoniker": "QuizSystem.Infrastructure\\Data\\Entities\\AnswerEntity.cs",
+              "ToolTip": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Infrastructure\\Data\\Entities\\AnswerEntity.cs",
+              "RelativeToolTip": "QuizSystem.Infrastructure\\Data\\Entities\\AnswerEntity.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAA1wA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T10:48:24.464Z",
               "EditorCaption": ""
             }
           ]
