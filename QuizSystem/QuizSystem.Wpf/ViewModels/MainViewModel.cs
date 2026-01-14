@@ -32,6 +32,11 @@ namespace QuizSystem.Wpf.ViewModels
         public string Title => _quiz.Title;
         public string? Description => _quiz.Description;
 
+
+        // IsInMenu steruje widokiem: na początku pokazuję menu wyboru quizu,
+        // a po starcie quizu przełączam UI na tryb rozwiązywania.
+        // To prosta “maszyna stanów” w VM, czytelna na zajęciach.
+
         public bool IsInMenu
         {
             get => _isInMenu;
@@ -64,6 +69,10 @@ namespace QuizSystem.Wpf.ViewModels
             set
             {
                 if (SetProperty(ref _searchText, value))
+
+                // LINQ w filtrze: czytelnie opisuje intencję (szukaj po tytule/opisie),
+                // a jednocześnie jest łatwe do rozbudowy (np. sortowanie, tagi, poziom trudności).
+
                 {
                     ApplyQuizFilter();
                 }
@@ -213,6 +222,11 @@ namespace QuizSystem.Wpf.ViewModels
             _currentIndex = 0;
             CurrentQuestion = _questions[_currentIndex];
             OnPropertyChanged(nameof(CurrentNumber));
+
+            // Po każdej zmianie stanu odświeżam CanExecute komend,
+            // żeby UI automatycznie blokował/przywracał przyciski.
+            // To unika logiki "w kod-behind" i trzyma MVVM w ryzach.
+
 
             RaiseButtons();
         }
