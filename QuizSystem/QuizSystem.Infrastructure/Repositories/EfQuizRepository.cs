@@ -9,6 +9,10 @@ namespace QuizSystem.Infrastructure.Repositories
 {
     public class EfQuizRepository : IQuizRepository
     {
+
+        // DbContext to "brama" do bazy danych.
+        // Repozytorium trzyma go prywatnie, żeby UI nie mieszało się do EF i SQL.
+
         private readonly AppDbContext _db;
 
         public EfQuizRepository(AppDbContext db)
@@ -16,13 +20,25 @@ namespace QuizSystem.Infrastructure.Repositories
             _db = db;
         }
 
+
         public List<Quiz> GetAll()
         {
+
+            // Include/ThenInclude: ładuję pełny graf Quiz -> Questions -> Answers,
+            // bo UI potrzebuje kompletu danych do rozwiązywania quizu.
+
             var entities = _db.Quizzes
                 .Include(q => q.Questions)
                     .ThenInclude(q => q.Answers)
+
+                // AsNoTracking: odczyt bez śledzenia zmian = mniej narzutu i szybsze ładowanie.
+                // To świadoma optymalizacja, bo tutaj nic nie edytuję w ramach odczytu.
+
                 .AsNoTracking()
                 .ToList();
+
+            // Mapowanie Entity -> Domain: rozdzielam modele EF od domeny.
+            // Dzięki temu domena nie zależy od EF Core i pozostaje testowalna i czysta.
 
             return entities.Select(MapToDomain).ToList();
         }
@@ -40,6 +56,9 @@ namespace QuizSystem.Infrastructure.Repositories
 
         public void Add(Quiz quiz)
         {
+            // Mapowanie Domain -> Entity: baza danych jest szczegółem infrastruktury.
+            // Zapis zawsze idzie przez encje EF, żeby nie "brudzić" domeny atrybutami EF.
+
             var entity = MapToEntity(quiz);
             _db.Quizzes.Add(entity);
             _db.SaveChanges();
