@@ -1,12 +1,122 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D77C2B92-5E7B-47F3-96B7-72C20E1B6B67}|QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.infrastructure\\entities\\answerentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D77C2B92-5E7B-47F3-96B7-72C20E1B6B67}|QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj|solutionrelative:quizsystem.infrastructure\\entities\\answerentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D77C2B92-5E7B-47F3-96B7-72C20E1B6B67}|QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.infrastructure\\entities\\questionentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D77C2B92-5E7B-47F3-96B7-72C20E1B6B67}|QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj|solutionrelative:quizsystem.infrastructure\\entities\\questionentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D77C2B92-5E7B-47F3-96B7-72C20E1B6B67}|QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.infrastructure\\entities\\quizentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D77C2B92-5E7B-47F3-96B7-72C20E1B6B67}|QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj|solutionrelative:quizsystem.infrastructure\\entities\\quizentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D77C2B92-5E7B-47F3-96B7-72C20E1B6B67}|QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.infrastructure\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D77C2B92-5E7B-47F3-96B7-72C20E1B6B67}|QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj|solutionrelative:quizsystem.infrastructure\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D77C2B92-5E7B-47F3-96B7-72C20E1B6B67}|QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.infrastructure\\quizsystem.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{D77C2B92-5E7B-47F3-96B7-72C20E1B6B67}|QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj|solutionrelative:quizsystem.infrastructure\\quizsystem.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D77C2B92-5E7B-47F3-96B7-72C20E1B6B67}|QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.infrastructure\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D77C2B92-5E7B-47F3-96B7-72C20E1B6B67}|QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj|solutionrelative:quizsystem.infrastructure\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AnswerEntity.cs",
+              "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Infrastructure\\Entities\\AnswerEntity.cs",
+              "RelativeDocumentMoniker": "QuizSystem.Infrastructure\\Entities\\AnswerEntity.cs",
+              "ToolTip": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Infrastructure\\Entities\\AnswerEntity.cs",
+              "RelativeToolTip": "QuizSystem.Infrastructure\\Entities\\AnswerEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T09:19:52.57Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "QuestionEntity.cs",
+              "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Infrastructure\\Entities\\QuestionEntity.cs",
+              "RelativeDocumentMoniker": "QuizSystem.Infrastructure\\Entities\\QuestionEntity.cs",
+              "ToolTip": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Infrastructure\\Entities\\QuestionEntity.cs",
+              "RelativeToolTip": "QuizSystem.Infrastructure\\Entities\\QuestionEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T09:19:37.183Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "QuizEntity.cs",
+              "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Infrastructure\\Entities\\QuizEntity.cs",
+              "RelativeDocumentMoniker": "QuizSystem.Infrastructure\\Entities\\QuizEntity.cs",
+              "ToolTip": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Infrastructure\\Entities\\QuizEntity.cs",
+              "RelativeToolTip": "QuizSystem.Infrastructure\\Entities\\QuizEntity.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAswEkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T09:19:14.928Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Infrastructure\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "QuizSystem.Infrastructure\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Infrastructure\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "QuizSystem.Infrastructure\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAswEkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T09:17:51.448Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "QuizSystem.Infrastructure",
+              "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj",
+              "RelativeDocumentMoniker": "QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj",
+              "ToolTip": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj*",
+              "RelativeToolTip": "QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-01-14T09:16:13.235Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Infrastructure\\Class1.cs",
+              "RelativeDocumentMoniker": "QuizSystem.Infrastructure\\Class1.cs",
+              "ToolTip": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Infrastructure\\Class1.cs",
+              "RelativeToolTip": "QuizSystem.Infrastructure\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T09:11:54.544Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
