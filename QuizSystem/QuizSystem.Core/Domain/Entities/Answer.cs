@@ -5,6 +5,14 @@ namespace QuizSystem.Core.Domain.Entities
     /// <summary>
     /// Konkretna implementacja odpowiedzi.
     /// </summary>
+    /// 
+
+    // Utrzymuję walidację tu (w domenie), bo UI ani baza nie powinny decydować o jakości danych.
+    // Dzięki temu niezależnie od źródła (WPF/Web/DB) reguły są te same.
+
+
+   
+
     public class Answer : IAnswer
     {
         public Guid Id { get; private set; }
@@ -31,6 +39,9 @@ namespace QuizSystem.Core.Domain.Entities
         }
 
         // ✅ Rehydrate: odtworzenie z bazy (z zachowaniem Id)
+
+        // Rehydrate istnieje, bo domena normalnie generuje Id (kontrola spójności),
+        // a przy odczycie z bazy musimy odtworzyć obiekt z konkretnym Id.
         private Answer(Guid id, string text, bool isCorrect)
         {
             if (id == Guid.Empty)
