@@ -593,6 +593,21 @@
         "runtime": {
           "bin/placeholder/QuizSystem.Core.dll": {}
         }
+      },
+      "QuizSystem.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "10.0.2",
+          "Microsoft.EntityFrameworkCore.Sqlite": "10.0.2",
+          "QuizSystem.Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/QuizSystem.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/QuizSystem.Infrastructure.dll": {}
+        }
       }
     }
   },
@@ -1373,6 +1388,11 @@
       "type": "project",
       "path": "../QuizSystem.Core/QuizSystem.Core.csproj",
       "msbuildProject": "../QuizSystem.Core/QuizSystem.Core.csproj"
+    },
+    "QuizSystem.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../QuizSystem.Infrastructure/QuizSystem.Infrastructure.csproj",
+      "msbuildProject": "../QuizSystem.Infrastructure/QuizSystem.Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -1382,7 +1402,8 @@
       "Microsoft.Extensions.Configuration >= 10.0.2",
       "Microsoft.Extensions.Configuration.Binder >= 10.0.2",
       "Microsoft.Extensions.Configuration.Json >= 10.0.2",
-      "QuizSystem.Core >= 1.0.0"
+      "QuizSystem.Core >= 1.0.0",
+      "QuizSystem.Infrastructure >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -1419,6 +1440,9 @@
           "projectReferences": {
             "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Core\\QuizSystem.Core.csproj": {
               "projectPath": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Core\\QuizSystem.Core.csproj"
+            },
+            "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Infrastructure\\QuizSystem.Infrastructure.csproj"
             }
           }
         }

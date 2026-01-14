@@ -2,35 +2,47 @@
 using Microsoft.Extensions.Configuration;
 using QuizSystem.Infrastructure.Data;
 using System;
+using System.IO;
 
 namespace QuizSystem.Wpf.Bootstrap
 {
-    /// <summary>
-    /// Prosty bootstrapper: ładuje konfigurację i buduje DbContextOptions.
-    /// Bez pełnego DI kontenera (na razie).
-    /// </summary>
     public static class AppBootstrapper
     {
+        // ✅ To jest metoda, której brakuje wg błędu:
+        // "AppBootstrapper does not contain a definition for CreateDbContext"
         public static AppDbContext CreateDbContext()
         {
-            // 1) Wczytanie appsettings.json z katalogu uruchomieniowego aplikacji
-            IConfiguration config = new ConfigurationBuilder()
-                .SetBasePath(AppContext.BaseDirectory)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .Build();
+            var connStr = TryReadConnectionStringFromAppSettings();
 
-            // 2) Pobranie connection string
-            string? cs = config.GetConnectionString("QuizDb");
+            if (string.IsNullOrWhiteSpace(connStr))
+            {
+                // domyślnie baza obok exe (w folderze aplikacji)
+                var dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "quizsystem.db");
+                connStr = $"Data Source={dbPath}";
+            }
 
-            if (string.IsNullOrWhiteSpace(cs))
-                throw new InvalidOperationException("Brak ConnectionStrings:QuizDb w appsettings.json");
-
-            // 3) Zbudowanie opcji DbContext
             var options = new DbContextOptionsBuilder<AppDbContext>()
-                .UseSqlite(cs)
+                .UseSqlite(connStr)
                 .Options;
 
             return new AppDbContext(options);
+        }
+
+        private static string? TryReadConnectionStringFromAppSettings()
+        {
+            try
+            {
+                var config = new ConfigurationBuilder()
+                    .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+                    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                    .Build();
+
+                return config.GetConnectionString("Default");
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

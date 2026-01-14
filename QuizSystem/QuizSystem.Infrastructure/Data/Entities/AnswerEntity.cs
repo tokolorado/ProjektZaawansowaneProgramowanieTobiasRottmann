@@ -1,10 +1,5 @@
-﻿using System;
-
-namespace QuizSystem.Infrastructure.Entities
+﻿namespace QuizSystem.Infrastructure.Data.Entities
 {
-    /// <summary>
-    /// Encja bazy danych: Odpowiedź.
-    /// </summary>
     public class AnswerEntity
     {
         public Guid Id { get; set; }
@@ -13,7 +8,6 @@ namespace QuizSystem.Infrastructure.Entities
 
         public bool IsCorrect { get; set; }
 
-        // FK do Question
         public Guid QuestionId { get; set; }
         public QuestionEntity? Question { get; set; }
     }

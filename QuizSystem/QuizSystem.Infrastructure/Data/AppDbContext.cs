@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using QuizSystem.Infrastructure.Entities;
+using QuizSystem.Infrastructure.Data.Entities;
 
 namespace QuizSystem.Infrastructure.Data
 {

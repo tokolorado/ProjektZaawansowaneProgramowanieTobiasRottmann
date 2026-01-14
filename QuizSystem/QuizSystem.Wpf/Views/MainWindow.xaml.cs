@@ -10,6 +10,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using QuizSystem.Wpf.Infrastructure;
 using QuizSystem.Wpf.ViewModels;
+using QuizSystem.Wpf.Bootstrap;
+
 
 namespace QuizSystem.Wpf.Views
 {
@@ -21,6 +23,9 @@ namespace QuizSystem.Wpf.Views
         public MainWindow()
         {
             InitializeComponent();
+
+            var db = AppBootstrapper.CreateDbContext();
+
 
             // Proste "wstrzyknięcie" zależności bez DI kontenera
             var dialogService = new WpfDialogService();
