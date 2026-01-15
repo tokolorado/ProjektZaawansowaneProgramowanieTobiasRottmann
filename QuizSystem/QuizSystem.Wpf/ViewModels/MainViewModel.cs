@@ -2,23 +2,21 @@
 using QuizSystem.Core.Domain.Interfaces;
 using QuizSystem.Wpf.Infrastructure;
 
-
-
 namespace QuizSystem.Wpf.ViewModels
 {
     /// <summary>
-    /// Główny VM aplikacji: ładuje quiz i pozwala rozwiązać go w WPF.
+    /// Główny VM aplikacji: menu wyboru quizu + rozwiązywanie quizu w WPF.
     /// </summary>
     public class MainViewModel : ObservableObject
     {
         private IQuiz _quiz;
         private List<QuestionViewModel> _questions;
+
         private List<QuizListItemViewModel> _allQuizzes;
         private List<QuizListItemViewModel> _filteredQuizzes;
         private QuizListItemViewModel? _selectedQuiz;
         private string _searchText = string.Empty;
         private bool _isInMenu = true;
-
 
         private int _currentIndex;
         private QuestionViewModel _currentQuestion;
@@ -28,19 +26,21 @@ namespace QuizSystem.Wpf.ViewModels
 
         private readonly IDialogService _dialogService;
 
-
         public string Title => _quiz.Title;
         public string? Description => _quiz.Description;
 
-
         // IsInMenu steruje widokiem: na początku pokazuję menu wyboru quizu,
         // a po starcie quizu przełączam UI na tryb rozwiązywania.
-        // To prosta “maszyna stanów” w VM, czytelna na zajęciach.
-
         public bool IsInMenu
         {
             get => _isInMenu;
-            private set => SetProperty(ref _isInMenu, value);
+            private set
+            {
+                if (SetProperty(ref _isInMenu, value))
+                {
+                    OnPropertyChanged(nameof(IsInQuiz));
+                }
+            }
         }
 
         public bool IsInQuiz => !IsInMenu;
@@ -69,16 +69,13 @@ namespace QuizSystem.Wpf.ViewModels
             set
             {
                 if (SetProperty(ref _searchText, value))
-
-                // LINQ w filtrze: czytelnie opisuje intencję (szukaj po tytule/opisie),
-                // a jednocześnie jest łatwe do rozbudowy (np. sortowanie, tagi, poziom trudności).
-
                 {
+                    // LINQ w filtrze: czytelnie opisuje intencję (szukaj po tytule/opisie),
+                    // a jednocześnie jest łatwe do rozbudowy (np. sortowanie, poziom trudności).
                     ApplyQuizFilter();
                 }
             }
         }
-
 
         public QuestionViewModel CurrentQuestion
         {
@@ -89,10 +86,21 @@ namespace QuizSystem.Wpf.ViewModels
         public int CurrentNumber => _currentIndex + 1;
         public int TotalQuestions => _questions.Count;
 
+        /// <summary>
+        /// Publiczny dostęp do pytań (do wyświetlania podsumowania po Finish).
+        /// </summary>
+        public IReadOnlyList<QuestionViewModel> Questions => _questions;
+
         public bool IsFinished
         {
             get => _isFinished;
-            private set => SetProperty(ref _isFinished, value);
+            private set
+            {
+                if (SetProperty(ref _isFinished, value))
+                {
+                    OnPropertyChanged(nameof(FinishedMessage));
+                }
+            }
         }
 
         public int Score
@@ -100,6 +108,7 @@ namespace QuizSystem.Wpf.ViewModels
             get => _score;
             private set => SetProperty(ref _score, value);
         }
+
         public string FinishedMessage
         {
             get
@@ -110,6 +119,7 @@ namespace QuizSystem.Wpf.ViewModels
                 return $"Koniec! Twój wynik to {Score} / {TotalQuestions}.";
             }
         }
+
         public RelayCommand StartQuizCommand { get; }
         public RelayCommand NextCommand { get; }
         public RelayCommand PrevCommand { get; }
@@ -122,13 +132,11 @@ namespace QuizSystem.Wpf.ViewModels
         {
             _dialogService = dialogService;
 
+            // Start w menu
             IsInMenu = true;
-            OnPropertyChanged(nameof(IsInQuiz));
 
-
-            // Na start bierzemy quiz demo.
+            // Na start domyślny quiz (gdyby ktoś odpalił bez menu)
             _quiz = QuizFactory.CreateSampleQuiz();
-
             _questions = _quiz.Questions.Select(q => new QuestionViewModel(q)).ToList();
 
             _currentIndex = 0;
@@ -151,15 +159,11 @@ namespace QuizSystem.Wpf.ViewModels
 
             _filteredQuizzes = _allQuizzes.ToList();
             Quizzes = _filteredQuizzes;
-
-
         }
 
         private bool CanGoNext() => !IsFinished && _currentIndex < _questions.Count - 1;
         private bool CanGoPrev() => !IsFinished && _currentIndex > 0;
         private bool CanFinish() => !IsFinished && _questions.Count > 0;
-
-
 
         private void Next()
         {
@@ -187,8 +191,7 @@ namespace QuizSystem.Wpf.ViewModels
 
         private void Finish()
         {
-            // Zbieramy odpowiedzi użytkownika do formatu wymaganego przez domenę:
-            // QuestionId -> lista AnswerId.
+            // 1) Zbieramy odpowiedzi użytkownika do formatu domeny
             var userAnswers = new Dictionary<Guid, IEnumerable<Guid>>();
 
             foreach (var q in _questions)
@@ -196,44 +199,52 @@ namespace QuizSystem.Wpf.ViewModels
                 userAnswers[q.Id] = q.GetChosenAnswerIds();
             }
 
+            // 2) Liczymy wynik domenowo
             Score = _quiz.CalculateScore(userAnswers);
-            IsFinished = true;
-            OnPropertyChanged(nameof(FinishedMessage));
 
+            // 3) Oceniamy każde pytanie (✅/❌) – to pójdzie do podsumowania w UI
+            foreach (var q in _questions)
+            {
+                q.Evaluate();
+            }
+
+            // 4) Flaga końca
+            IsFinished = true;
+
+            // 5) Odświeżamy UI
+            OnPropertyChanged(nameof(Questions));
             RaiseButtons();
         }
 
         private void Restart()
         {
-            // Reset zaznaczeń
+            // Reset zaznaczeń i wyników
             foreach (var q in _questions)
             {
                 foreach (var option in q.Options)
                 {
                     option.IsSelected = false;
                 }
+
+                q.ClearEvaluation();
             }
 
             Score = 0;
             IsFinished = false;
-            OnPropertyChanged(nameof(FinishedMessage));
-
 
             _currentIndex = 0;
             CurrentQuestion = _questions[_currentIndex];
+
             OnPropertyChanged(nameof(CurrentNumber));
+            OnPropertyChanged(nameof(Questions));
 
             // Po każdej zmianie stanu odświeżam CanExecute komend,
             // żeby UI automatycznie blokował/przywracał przyciski.
-            // To unika logiki "w kod-behind" i trzyma MVVM w ryzach.
-
-
             RaiseButtons();
         }
 
         private void Cancel()
         {
-            // 1) Pytamy użytkownika czy na pewno chce wyjść
             bool confirm = _dialogService.Confirm(
                 "Wyjście z quizu",
                 "Czy na pewno chcesz wyjść z quizu?\nPostęp zostanie utracony.");
@@ -241,21 +252,15 @@ namespace QuizSystem.Wpf.ViewModels
             if (!confirm)
                 return;
 
-            // 2) Zamykamy aplikację (lub później wrócimy do ekranu wyboru quizu)
             System.Windows.Application.Current.Shutdown();
         }
-
 
         private bool CanCancel() => !IsFinished;
 
-
-
         private void CloseApp()
         {
-            // Zamknięcie całej aplikacji WPF
             System.Windows.Application.Current.Shutdown();
         }
-
 
         private void RaiseButtons()
         {
@@ -275,9 +280,9 @@ namespace QuizSystem.Wpf.ViewModels
             LoadQuiz(SelectedQuiz.Quiz);
             IsInMenu = false;
 
-            OnPropertyChanged(nameof(IsInQuiz));
             RaiseButtons();
         }
+
         private void ApplyQuizFilter()
         {
             var text = (SearchText ?? string.Empty).Trim();
@@ -295,6 +300,7 @@ namespace QuizSystem.Wpf.ViewModels
             query = query.OrderBy(q => q.Title);
             Quizzes = query.ToList();
         }
+
         private void LoadQuiz(IQuiz quiz)
         {
             _quiz = quiz;
@@ -302,6 +308,10 @@ namespace QuizSystem.Wpf.ViewModels
             _questions = _quiz.Questions
                 .Select(q => new QuestionViewModel(q))
                 .ToList();
+
+            // reset ocen (na wypadek powrotu do quizu)
+            foreach (var q in _questions)
+                q.ClearEvaluation();
 
             _currentIndex = 0;
             CurrentQuestion = _questions[_currentIndex];
@@ -314,10 +324,9 @@ namespace QuizSystem.Wpf.ViewModels
             OnPropertyChanged(nameof(TotalQuestions));
             OnPropertyChanged(nameof(CurrentNumber));
             OnPropertyChanged(nameof(FinishedMessage));
+            OnPropertyChanged(nameof(Questions));
 
             RaiseButtons();
         }
-
     }
-
 }

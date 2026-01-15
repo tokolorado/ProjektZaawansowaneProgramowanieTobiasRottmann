@@ -31,5 +31,10 @@ namespace QuizSystem.Wpf.Views
             var dialogService = new WpfDialogService();
             DataContext = new MainViewModel(dialogService);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

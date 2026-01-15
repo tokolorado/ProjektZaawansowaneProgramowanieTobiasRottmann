@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{653E3798-90E4-4D80-A09F-54D21483195B}|QuizSystem.Wpf\\QuizSystem.Wpf.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.wpf\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{653E3798-90E4-4D80-A09F-54D21483195B}|QuizSystem.Wpf\\QuizSystem.Wpf.csproj|solutionrelative:quizsystem.wpf\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{653E3798-90E4-4D80-A09F-54D21483195B}|QuizSystem.Wpf\\QuizSystem.Wpf.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.wpf\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{653E3798-90E4-4D80-A09F-54D21483195B}|QuizSystem.Wpf\\QuizSystem.Wpf.csproj|solutionrelative:quizsystem.wpf\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{653E3798-90E4-4D80-A09F-54D21483195B}|QuizSystem.Wpf\\QuizSystem.Wpf.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.wpf\\viewmodels\\questionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{653E3798-90E4-4D80-A09F-54D21483195B}|QuizSystem.Wpf\\QuizSystem.Wpf.csproj|solutionrelative:quizsystem.wpf\\viewmodels\\questionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72459C79-915F-3C3D-2FBE-B463020766B1}|QuizSystem.Core\\QuizSystem.Core.csproj|c:\\users\\tobia\\documents\\github\\projektzaawansowaneprogramowanie\\quizsystem\\quizsystem.core\\application\\quizfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72459C79-915F-3C3D-2FBE-B463020766B1}|QuizSystem.Core\\QuizSystem.Core.csproj|solutionrelative:quizsystem.core\\application\\quizfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\tobia\\AppData\\Local\\Temp\\.vsdbgsrc\\ba71154a7b44d057354e94bf9136ff00912660e0c8e1435d76b141387af3b90b\\XamlReader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -13,11 +29,61 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Wpf\\ViewModels\\MainViewModel.cs",
+              "RelativeDocumentMoniker": "QuizSystem.Wpf\\ViewModels\\MainViewModel.cs",
+              "ToolTip": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Wpf\\ViewModels\\MainViewModel.cs",
+              "RelativeToolTip": "QuizSystem.Wpf\\ViewModels\\MainViewModel.cs",
+              "ViewState": "AgIAALcAAAAAAAAAAAArwFkAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T11:43:18.754Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Wpf\\Views\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "QuizSystem.Wpf\\Views\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Wpf\\Views\\MainWindow.xaml",
+              "RelativeToolTip": "QuizSystem.Wpf\\Views\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-01-15T11:43:44.253Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "QuestionViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Wpf\\ViewModels\\QuestionViewModel.cs",
+              "RelativeDocumentMoniker": "QuizSystem.Wpf\\ViewModels\\QuestionViewModel.cs",
+              "ToolTip": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Wpf\\ViewModels\\QuestionViewModel.cs",
+              "RelativeToolTip": "QuizSystem.Wpf\\ViewModels\\QuestionViewModel.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAwwFAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T11:40:25.151Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "QuizFactory.cs",
+              "DocumentMoniker": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Core\\Application\\QuizFactory.cs",
+              "RelativeDocumentMoniker": "QuizSystem.Core\\Application\\QuizFactory.cs",
+              "ToolTip": "C:\\Users\\tobia\\Documents\\GitHub\\ProjektZaawansowaneProgramowanie\\QuizSystem\\QuizSystem.Core\\Application\\QuizFactory.cs",
+              "RelativeToolTip": "QuizSystem.Core\\Application\\QuizFactory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAO0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T10:56:49.988Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "XamlReader.cs",
               "DocumentMoniker": "C:\\Users\\tobia\\AppData\\Local\\Temp\\.vsdbgsrc\\ba71154a7b44d057354e94bf9136ff00912660e0c8e1435d76b141387af3b90b\\XamlReader.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\ba71154a7b44d057354e94bf9136ff00912660e0c8e1435d76b141387af3b90b\\XamlReader.cs",
