@@ -8,6 +8,9 @@
 
         public bool IsCorrect { get; set; }
 
+        public int Order { get; set; }
+
+
         public Guid QuestionId { get; set; }
         public QuestionEntity? Question { get; set; }
     }

@@ -53,6 +53,9 @@ namespace QuizSystem.Infrastructure.Data
                       .IsRequired()
                       .HasMaxLength(500);
 
+                entity.Property(q => q.Order)
+                      .IsRequired();
+    
                 entity.HasMany(q => q.Answers)
                       .WithOne(a => a.Question)
                       .HasForeignKey(a => a.QuestionId)
@@ -67,6 +70,9 @@ namespace QuizSystem.Infrastructure.Data
                 entity.Property(a => a.Text)
                       .IsRequired()
                       .HasMaxLength(200);
+
+                entity.Property(a => a.Order)
+                      .IsRequired();
             });
         }
     }

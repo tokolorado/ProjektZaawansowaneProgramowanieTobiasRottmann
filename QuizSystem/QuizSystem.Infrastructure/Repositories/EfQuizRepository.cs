@@ -7,12 +7,13 @@ using QuizSystem.Infrastructure.Data.Entities;
 
 namespace QuizSystem.Infrastructure.Repositories
 {
+    /// <summary>
+    /// Repozytorium EF Core:
+    /// - czyta i zapisuje Quizy do bazy
+    /// - mapuje Entity <-> Domain, żeby domena nie zależała od EF
+    /// </summary>
     public class EfQuizRepository : IQuizRepository
     {
-
-        // DbContext to "brama" do bazy danych.
-        // Repozytorium trzyma go prywatnie, żeby UI nie mieszało się do EF i SQL.
-
         private readonly AppDbContext _db;
 
         public EfQuizRepository(AppDbContext db)
@@ -20,72 +21,146 @@ namespace QuizSystem.Infrastructure.Repositories
             _db = db;
         }
 
+        // =========================
+        // READ
+        // =========================
 
-        public List<Quiz> GetAll()
+        public async Task<List<Quiz>> GetAllAsync()
         {
-
-            // Include/ThenInclude: ładuję pełny graf Quiz -> Questions -> Answers,
-            // bo UI potrzebuje kompletu danych do rozwiązywania quizu.
-
-            var entities = _db.Quizzes
+            // AsNoTracking = odczyt bez śledzenia zmian (wydajniej, bo nic nie edytujemy w tym miejscu)
+            var entities = await _db.Quizzes
+                .AsNoTracking()
                 .Include(q => q.Questions)
                     .ThenInclude(q => q.Answers)
-
-                // AsNoTracking: odczyt bez śledzenia zmian = mniej narzutu i szybsze ładowanie.
-                // To świadoma optymalizacja, bo tutaj nic nie edytuję w ramach odczytu.
-
-                .AsNoTracking()
-                .ToList();
-
-            // Mapowanie Entity -> Domain: rozdzielam modele EF od domeny.
-            // Dzięki temu domena nie zależy od EF Core i pozostaje testowalna i czysta.
+                .ToListAsync();
 
             return entities.Select(MapToDomain).ToList();
         }
 
-        public Quiz? GetById(Guid id)
+        public async Task<Quiz?> GetByIdAsync(Guid id)
         {
-            var entity = _db.Quizzes
+            var entity = await _db.Quizzes
+                .AsNoTracking()
                 .Include(q => q.Questions)
                     .ThenInclude(q => q.Answers)
-                .AsNoTracking()
-                .FirstOrDefault(q => q.Id == id);
+                .FirstOrDefaultAsync(q => q.Id == id);
 
             return entity == null ? null : MapToDomain(entity);
         }
 
-        public void Add(Quiz quiz)
-        {
-            // Mapowanie Domain -> Entity: baza danych jest szczegółem infrastruktury.
-            // Zapis zawsze idzie przez encje EF, żeby nie "brudzić" domeny atrybutami EF.
+        // =========================
+        // CREATE
+        // =========================
 
+        public async Task AddAsync(Quiz quiz)
+        {
             var entity = MapToEntity(quiz);
+
             _db.Quizzes.Add(entity);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
         }
 
-        // ----------------------------
-        // EF -> Domain
-        // ----------------------------
-        private static Quiz MapToDomain(QuizEntity qe)
-        {
-            var domainQuestions = qe.Questions
-                .Select(qEntity =>
-                {
-                    var answers = qEntity.Answers
-                        .Select(ae => (IAnswer)Answer.Rehydrate(ae.Id, ae.Text, ae.IsCorrect))
-                        .ToList();
+        // =========================
+        // UPDATE
+        // =========================
 
-                    return (IQuestion)Question.Rehydrate(qEntity.Id, qEntity.Content, answers);
-                })
+        public async Task UpdateAsync(Quiz quiz)
+        {
+            // Najprościej: usuwamy stary graf i wstawiamy nowy (w projekcie demo to wystarczy).
+            // Przy większych systemach robi się "diff" i aktualizuje selektywnie,
+            // ale tu ważniejsze jest spełnienie CRUD i czytelność.
+            var existing = await _db.Quizzes
+                .Include(q => q.Questions)
+                    .ThenInclude(q => q.Answers)
+                .FirstOrDefaultAsync(q => q.Id == quiz.Id);
+
+            if (existing == null)
+                throw new InvalidOperationException($"Quiz with id '{quiz.Id}' not found.");
+
+            // 1) Czyścimy dzieci (pytania i odpowiedzi)
+            _db.Answers.RemoveRange(existing.Questions.SelectMany(x => x.Answers));
+            _db.Questions.RemoveRange(existing.Questions);
+
+            // 2) Aktualizujemy podstawowe pola
+            existing.Title = quiz.Title;
+            existing.Description = quiz.Description;
+
+            // 3) Dodajemy nowy graf pytań/odpowiedzi
+            var newQuestions = CreateQuestionEntities(quiz, existing.Id);
+            existing.Questions = newQuestions;
+
+            await _db.SaveChangesAsync();
+        }
+
+        // =========================
+        // DELETE
+        // =========================
+
+        public async Task DeleteAsync(Guid id)
+        {
+            var entity = await _db.Quizzes
+                .Include(q => q.Questions)
+                    .ThenInclude(q => q.Answers)
+                .FirstOrDefaultAsync(q => q.Id == id);
+
+            if (entity == null)
+                return; // Delete "idempotent" - jak nie ma, to nic nie robimy
+
+            _db.Quizzes.Remove(entity);
+            await _db.SaveChangesAsync();
+        }
+
+        // =========================
+        // MAPOWANIE: Entity -> Domain
+        // =========================
+
+        private static Quiz MapToDomain(QuizEntity quizEntity)
+        {
+            // Tworzymy pytania domenowe
+            var domainQuestions = quizEntity.Questions
+                .OrderBy(q => q.Order)
+                .Select(MapQuestionToDomain)
                 .ToList();
 
-            return Quiz.Rehydrate(qe.Id, qe.Title, qe.Description, domainQuestions);
+            // UWAGA:
+            // Jeśli Twoja domena ma Rehydrate(...) to użyj jej.
+            // Jeśli nie ma, to konstruktor Quiz tworzy nowe Id i to będzie konflikt z DB.
+            // Zakładam, że masz Rehydrate, bo wcześniej tak to naprawialiśmy.
+            return Quiz.Rehydrate(
+                id: quizEntity.Id,
+                title: quizEntity.Title,
+                description: quizEntity.Description,
+                questions: domainQuestions
+            );
         }
 
-        // ----------------------------
-        // Domain -> EF
-        // ----------------------------
+        private static Question MapQuestionToDomain(QuestionEntity questionEntity)
+        {
+            var domainAnswers = questionEntity.Answers
+                .OrderBy(a => a.Order)
+                .Select(MapAnswerToDomain)
+                .ToList();
+
+            return Question.Rehydrate(
+                id: questionEntity.Id,
+                content: questionEntity.Content,
+                answers: domainAnswers
+            );
+        }
+
+        private static Answer MapAnswerToDomain(AnswerEntity answerEntity)
+        {
+            return Answer.Rehydrate(
+                id: answerEntity.Id,
+                text: answerEntity.Text,
+                isCorrect: answerEntity.IsCorrect
+            );
+        }
+
+        // =========================
+        // MAPOWANIE: Domain -> Entity
+        // =========================
+
         private static QuizEntity MapToEntity(Quiz quiz)
         {
             var quizEntity = new QuizEntity
@@ -93,34 +168,53 @@ namespace QuizSystem.Infrastructure.Repositories
                 Id = quiz.Id,
                 Title = quiz.Title,
                 Description = quiz.Description,
-                Questions = new List<QuestionEntity>()
+                Questions = CreateQuestionEntities(quiz, quiz.Id)
             };
 
+            return quizEntity;
+        }
+
+        private static List<QuestionEntity> CreateQuestionEntities(Quiz quiz, Guid quizId)
+        {
+            // quiz.Questions jest IReadOnlyList<IQuestion> - mapujemy do encji EF
+            var list = new List<QuestionEntity>();
+
+            int qOrder = 1;
             foreach (var q in quiz.Questions)
             {
-                var qEntity = new QuestionEntity
+                var questionEntity = new QuestionEntity
                 {
                     Id = q.Id,
+                    QuizId = quizId,
                     Content = q.Content,
-                    QuizId = quizEntity.Id,
-                    Answers = new List<AnswerEntity>()
+                    Order = qOrder++,
+                    Answers = CreateAnswerEntities(q, q.Id)
                 };
 
-                foreach (var a in q.Answers)
-                {
-                    qEntity.Answers.Add(new AnswerEntity
-                    {
-                        Id = a.Id,
-                        Text = a.Text,
-                        IsCorrect = a.IsCorrect,
-                        QuestionId = qEntity.Id
-                    });
-                }
-
-                quizEntity.Questions.Add(qEntity);
+                list.Add(questionEntity);
             }
 
-            return quizEntity;
+            return list;
+        }
+
+        private static List<AnswerEntity> CreateAnswerEntities(IQuestion question, Guid questionId)
+        {
+            var list = new List<AnswerEntity>();
+
+            int aOrder = 1;
+            foreach (var a in question.Answers)
+            {
+                list.Add(new AnswerEntity
+                {
+                    Id = a.Id,
+                    QuestionId = questionId,
+                    Text = a.Text,
+                    IsCorrect = a.IsCorrect,
+                    Order = aOrder++
+                });
+            }
+
+            return list;
         }
     }
 }
