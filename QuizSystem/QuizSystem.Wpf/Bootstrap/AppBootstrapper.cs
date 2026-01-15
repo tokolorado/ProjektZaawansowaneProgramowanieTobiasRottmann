@@ -3,13 +3,13 @@ using Microsoft.Extensions.Configuration;
 using QuizSystem.Infrastructure.Data;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace QuizSystem.Wpf.Bootstrap
 {
     public static class AppBootstrapper
     {
-        // ✅ To jest metoda, której brakuje wg błędu:
-        // "AppBootstrapper does not contain a definition for CreateDbContext"
+        // Tworzy DbContext z connection string (z appsettings.json albo domyślnie obok exe)
         public static AppDbContext CreateDbContext()
         {
             var connStr = TryReadConnectionStringFromAppSettings();
@@ -26,6 +26,20 @@ namespace QuizSystem.Wpf.Bootstrap
                 .Options;
 
             return new AppDbContext(options);
+        }
+
+        // ✅ To odpalasz na starcie aplikacji:
+        // - tworzy/aktualizuje bazę (migracje)
+        // - seeduje dane (jeśli baza jest pusta)
+        public static async Task EnsureDatabaseCreatedAndSeededAsync()
+        {
+            using var db = CreateDbContext();
+
+            // 1) migracje -> tworzy DB jeśli nie ma, aktualizuje schemat jeśli jest
+            await db.Database.MigrateAsync();
+
+            // 2) seed -> tylko jeśli w bazie nie ma quizów
+            await DbSeeder.SeedAsync(db);
         }
 
         private static string? TryReadConnectionStringFromAppSettings()

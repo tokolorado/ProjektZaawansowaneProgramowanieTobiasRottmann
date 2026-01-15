@@ -1,17 +1,7 @@
-﻿using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using QuizSystem.Wpf.Bootstrap;
 using QuizSystem.Wpf.Infrastructure;
 using QuizSystem.Wpf.ViewModels;
-using QuizSystem.Wpf.Bootstrap;
-
 
 namespace QuizSystem.Wpf.Views
 {
@@ -24,17 +14,15 @@ namespace QuizSystem.Wpf.Views
         {
             InitializeComponent();
 
-            var db = AppBootstrapper.CreateDbContext();
+            Loaded += async (_, __) =>
+            {
+                // 1) Migracje + seed
+                await AppBootstrapper.EnsureDatabaseCreatedAndSeededAsync();
 
-
-            // Proste "wstrzyknięcie" zależności bez DI kontenera
-            var dialogService = new WpfDialogService();
-            DataContext = new MainViewModel(dialogService);
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
+                // 2) VM
+                var dialogService = new WpfDialogService();
+                DataContext = new MainViewModel(dialogService);
+            };
         }
     }
 }

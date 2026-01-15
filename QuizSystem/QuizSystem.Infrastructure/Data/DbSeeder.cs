@@ -7,10 +7,10 @@ namespace QuizSystem.Infrastructure.Data
     {
         public static async Task SeedAsync(AppDbContext db)
         {
-            // 1) Db na pewno istnieje + migracje
-            await db.Database.MigrateAsync();
+            // ❗ Migracje robimy w AppBootstrapper, nie tutaj.
+            // Tu tylko seed.
 
-            // 2) Jeśli już są quizy -> nie seedujemy drugi raz
+            // Jeśli już są quizy -> nie seedujemy drugi raz
             if (await db.Quizzes.AnyAsync())
                 return;
 
