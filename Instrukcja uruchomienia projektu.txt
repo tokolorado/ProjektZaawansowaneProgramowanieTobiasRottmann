@@ -1,0 +1,43 @@
+Instrukcja uruchomienia projektu QuizSystem
+
+
+
+Wymagania:
+
+Windows 10 / 11
+
+.NET SDK 10.0 (lub zgodne Preview)
+
+Visual Studio 2022 (zalecane)
+
+workload: .NET Desktop Development
+
+Kroki uruchomienia:
+
+Rozpakuj archiwum ZIP
+
+Otwórz plik:
+
+QuizSystem/QuizSystem.slnx
+
+
+Ustaw projekt startowy:
+
+QuizSystem.Wpf
+
+
+Uruchom aplikację (F5)
+
+Pierwsze uruchomienie:
+
+Aplikacja automatycznie:
+
+tworzy bazę SQLite (quizsystem.db)
+
+wykonuje migracje EF Core
+
+seeduje dane (3 quizy)
+
+Nie są wymagane żadne dodatkowe konfiguracje.
+
+
