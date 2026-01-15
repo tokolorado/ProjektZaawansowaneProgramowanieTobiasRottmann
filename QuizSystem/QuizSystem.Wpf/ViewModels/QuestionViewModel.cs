@@ -8,6 +8,7 @@ namespace QuizSystem.Wpf.ViewModels
     /// </summary>
     public class QuestionViewModel : ObservableObject
     {
+        // Trzymamy referencję do modelu domenowego, bo to on wie jak sprawdzić odpowiedź (CheckAnswer).
         private readonly IQuestion _question;
 
         public Guid Id { get; }
@@ -36,9 +37,13 @@ namespace QuizSystem.Wpf.ViewModels
 
         public QuestionViewModel(IQuestion question)
         {
+            // ✅ KLUCZOWE: przypisujemy pole, żeby Evaluate() miało na czym pracować
+            _question = question;
+
             Id = question.Id;
             Content = question.Content;
 
+            // Przekazujemy IsCorrect do opcji, żeby UI mogło je później pokolorować
             Options = question.Answers
                 .Select(a => new AnswerOptionViewModel(a.Id, a.Text, a.IsCorrect))
                 .ToList();

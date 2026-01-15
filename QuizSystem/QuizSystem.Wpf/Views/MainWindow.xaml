@@ -7,10 +7,7 @@
         Title="QuizSystem" Height="520" Width="820"
         Icon="/Assets/favicon.ico">
 
-
-
-
-        <Grid Margin="16">
+    <Grid Margin="16">
 
         <!-- ========================= -->
         <!-- PANEL 0: MENU (IsInMenu = true) -->
@@ -120,16 +117,17 @@
                                    TextWrapping="Wrap"
                                    Margin="0,0,0,12"/>
 
+                        <!-- Odpowiedzi + delikatne kolorowanie po Finish -->
                         <ItemsControl ItemsSource="{Binding CurrentQuestion.Options}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <CheckBox Content="{Binding Text}"
-                                        IsChecked="{Binding IsSelected, Mode=TwoWay}"
-                                        Margin="0,4,0,4">
-                                        <CheckBox.Style>
-                                            <Style TargetType="CheckBox">
-
-                                                <!-- Domyślnie brak koloru -->
+                                    <!-- kolorujemy Border, nie CheckBox -->
+                                    <Border CornerRadius="6"
+                                            Padding="6"
+                                            Margin="0,4,0,4"
+                                            Background="Transparent">
+                                        <Border.Style>
+                                            <Style TargetType="Border">
                                                 <Setter Property="Background" Value="Transparent"/>
 
                                                 <Style.Triggers>
@@ -155,8 +153,12 @@
 
                                                 </Style.Triggers>
                                             </Style>
-                                        </CheckBox.Style>
-                                    </CheckBox>
+                                        </Border.Style>
+
+                                        <CheckBox Content="{Binding Text}"
+                                                  IsChecked="{Binding IsSelected, Mode=TwoWay}"
+                                                  Background="Transparent"/>
+                                    </Border>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
@@ -176,70 +178,30 @@
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
-                        <Button Content="Poprzednie" Margin="16,0,0,0" Command="{Binding PrevCommand}" RenderTransformOrigin="0.5,0.5" >
+                        <Button Content="Poprzednie" Margin="16,0,0,0" Command="{Binding PrevCommand}">
                             <Button.Effect>
                                 <DropShadowEffect/>
                             </Button.Effect>
-                            <Button.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform/>
-                                    <SkewTransform/>
-                                    <RotateTransform/>
-                                    <TranslateTransform X="2" Y="0.4"/>
-                                </TransformGroup>
-                            </Button.RenderTransform>
                         </Button>
-                        <Button Content="Następne" Margin="8,0,0,0" Command="{Binding NextCommand}" RenderTransformOrigin="0.5,0.5">
+                        <Button Content="Następne" Margin="8,0,0,0" Command="{Binding NextCommand}">
                             <Button.Effect>
                                 <DropShadowEffect/>
                             </Button.Effect>
-                            <Button.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform/>
-                                    <SkewTransform/>
-                                    <RotateTransform/>
-                                    <TranslateTransform X="0" Y="0"/>
-                                </TransformGroup>
-                            </Button.RenderTransform>
                         </Button>
-                        <Button Content="Zakończ" Margin="8,0,0,0" Command="{Binding FinishCommand}" RenderTransformOrigin="0.5,0.5" >
+                        <Button Content="Zakończ" Margin="8,0,0,0" Command="{Binding FinishCommand}">
                             <Button.Effect>
                                 <DropShadowEffect/>
                             </Button.Effect>
-                            <Button.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform/>
-                                    <SkewTransform/>
-                                    <RotateTransform/>
-                                    <TranslateTransform X="2" Y="0.4"/>
-                                </TransformGroup>
-                            </Button.RenderTransform>
                         </Button>
-                        <Button Content="Restart" Margin="8,0,0,0" Command="{Binding RestartCommand}" RenderTransformOrigin="0.5,0.5" >
+                        <Button Content="Restart" Margin="8,0,0,0" Command="{Binding RestartCommand}">
                             <Button.Effect>
                                 <DropShadowEffect/>
                             </Button.Effect>
-                            <Button.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform/>
-                                    <SkewTransform/>
-                                    <RotateTransform/>
-                                    <TranslateTransform X="2" Y="0.4"/>
-                                </TransformGroup>
-                            </Button.RenderTransform>
                         </Button>
-                        <Button Content="Wyjdź" Margin="8,0,0,0" Command="{Binding CancelCommand}" RenderTransformOrigin="0.5,0.5" >
+                        <Button Content="Wyjdź" Margin="8,0,0,0" Command="{Binding CancelCommand}">
                             <Button.Effect>
                                 <DropShadowEffect/>
                             </Button.Effect>
-                            <Button.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform/>
-                                    <SkewTransform/>
-                                    <RotateTransform/>
-                                    <TranslateTransform X="2" Y="0.4"/>
-                                </TransformGroup>
-                            </Button.RenderTransform>
                         </Button>
                     </StackPanel>
                 </Grid>
@@ -289,7 +251,7 @@
                            Margin="0,0,0,16"
                            TextWrapping="Wrap"/>
 
-                <!-- Podsumowanie: które pytania były poprawne/błędne -->
+                <!-- Podsumowanie: pytania na zielono/czerwono -->
                 <Border BorderBrush="LightGray"
                         BorderThickness="1"
                         CornerRadius="6"
@@ -298,32 +260,131 @@
 
                     <StackPanel>
                         <TextBlock Text="Podsumowanie odpowiedzi:"
-                                    FontWeight="Bold"
-                                    Margin="0,0,0,8"/>
+                                   FontWeight="Bold"
+                                   Margin="0,0,0,8"/>
 
-                        <!-- Scroll, żeby przy długich pytaniach nic nie uciekało -->
-                        <ScrollViewer Height="220"
-                                        VerticalScrollBarVisibility="Auto">
-
+                        <ScrollViewer Height="400" VerticalScrollBarVisibility="Auto">
                             <ItemsControl ItemsSource="{Binding Questions}">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <Border BorderBrush="#DDDDDD"
-                                BorderThickness="1"
-                                CornerRadius="4"
-                                Padding="8"
-                                Margin="0,0,0,8">
+                                        <Border CornerRadius="6"
+                    Padding="10"
+                    Margin="0,0,0,10"
+                    BorderBrush="#E6E6E6"
+                    BorderThickness="1">
 
                                             <StackPanel>
-                                                <!-- Treść pytania -->
                                                 <TextBlock Text="{Binding Content}"
-                                           FontWeight="SemiBold"
-                                           TextWrapping="Wrap"/>
+                               FontWeight="SemiBold"
+                               TextWrapping="Wrap"/>
 
-                                                <!-- ✅/❌ -->
                                                 <TextBlock Text="{Binding ResultLabel}"
-                                           Margin="0,4,0,0"
-                                           Opacity="0.9"/>
+                               Margin="0,6,0,10"
+                               FontWeight="Bold"/>
+
+                                                <!-- Odpowiedzi w podsumowaniu -->
+                                                <ItemsControl ItemsSource="{Binding Questions}">
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Border CornerRadius="6"
+                    Padding="10"
+                    Margin="0,0,0,10"
+                    BorderThickness="1"
+                    BorderBrush="#DDDDDD"
+                    Background="White">
+
+                                                                <!-- Kolor tła całego pytania -->
+                                                                <Border.Style>
+                                                                    <Style TargetType="Border">
+                                                                        <Setter Property="Background" Value="White"/>
+                                                                        <Setter Property="BorderBrush" Value="#DDDDDD"/>
+
+                                                                        <Style.Triggers>
+                                                                            <!-- ✅ pytanie poprawne -->
+                                                                            <DataTrigger Binding="{Binding IsCorrect}" Value="True">
+                                                                                <Setter Property="Background" Value="#DFF5EA"/>
+                                                                                <Setter Property="BorderBrush" Value="#86C7A7"/>
+                                                                            </DataTrigger>
+
+                                                                            <!-- ❌ pytanie błędne -->
+                                                                            <DataTrigger Binding="{Binding IsCorrect}" Value="False">
+                                                                                <Setter Property="Background" Value="#FBEAEA"/>
+                                                                                <Setter Property="BorderBrush" Value="#D48B8B"/>
+                                                                            </DataTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </Border.Style>
+
+                                                                <StackPanel>
+                                                                    <!-- Treść pytania -->
+                                                                    <TextBlock Text="{Binding Content}"
+                               FontWeight="SemiBold"
+                               TextWrapping="Wrap"/>
+
+                                                                    <!-- ✅/❌ etykieta -->
+                                                                    <TextBlock Text="{Binding ResultLabel}"
+                               Margin="0,6,0,8"
+                               FontWeight="Bold"/>
+
+                                                                    <!-- Lista odpowiedzi (bez True/False tekstem) -->
+                                                                    <ItemsControl ItemsSource="{Binding Options}">
+                                                                        <ItemsControl.ItemTemplate>
+                                                                            <DataTemplate>
+
+                                                                                <!-- kolorujemy BORDER (pewne), nie CheckBox -->
+                                                                                <Border CornerRadius="6"
+                                        Padding="6"
+                                        Margin="0,3,0,3"
+                                        Background="Transparent">
+                                                                                    <Border.Style>
+                                                                                        <Style TargetType="Border">
+                                                                                            <Setter Property="Background" Value="Transparent"/>
+
+                                                                                            <Style.Triggers>
+
+                                                                                                <!-- ✅ poprawna odpowiedź (po finish) -->
+                                                                                                <MultiDataTrigger>
+                                                                                                    <MultiDataTrigger.Conditions>
+                                                                                                        <Condition Binding="{Binding IsQuizFinished}" Value="True"/>
+                                                                                                        <Condition Binding="{Binding IsCorrect}" Value="True"/>
+                                                                                                    </MultiDataTrigger.Conditions>
+                                                                                                    <Setter Property="Background" Value="#CFEFE0"/>
+                                                                                                </MultiDataTrigger>
+
+                                                                                                <!-- ❌ zaznaczona, ale błędna -->
+                                                                                                <MultiDataTrigger>
+                                                                                                    <MultiDataTrigger.Conditions>
+                                                                                                        <Condition Binding="{Binding IsQuizFinished}" Value="True"/>
+                                                                                                        <Condition Binding="{Binding IsCorrect}" Value="False"/>
+                                                                                                        <Condition Binding="{Binding IsSelected}" Value="True"/>
+                                                                                                    </MultiDataTrigger.Conditions>
+                                                                                                    <Setter Property="Background" Value="#F5D1D1"/>
+                                                                                                </MultiDataTrigger>
+
+                                                                                            </Style.Triggers>
+                                                                                        </Style>
+                                                                                    </Border.Style>
+
+                                                                                    <!-- Zamiast True/False: checkbox zaznaczenia + tekst -->
+                                                                                    <StackPanel Orientation="Horizontal">
+                                                                                        <CheckBox IsChecked="{Binding IsSelected}"
+                                                  IsEnabled="False"
+                                                  Margin="0,0,6,0"/>
+                                                                                        <TextBlock Text="{Binding Text}" TextWrapping="Wrap"/>
+                                                                                    </StackPanel>
+                                                                                </Border>
+
+                                                                            </DataTemplate>
+                                                                        </ItemsControl.ItemTemplate>
+                                                                    </ItemsControl>
+
+                                                                </StackPanel>
+                                                            </Border>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+
+
                                             </StackPanel>
                                         </Border>
                                     </DataTemplate>
@@ -333,7 +394,6 @@
                         </ScrollViewer>
                     </StackPanel>
                 </Border>
-
 
                 <StackPanel Orientation="Horizontal">
                     <Button Content="Restart"

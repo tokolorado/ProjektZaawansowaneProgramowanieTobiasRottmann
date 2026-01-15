@@ -38,6 +38,7 @@ namespace QuizSystem.Wpf.ViewModels
             {
                 if (SetProperty(ref _isInMenu, value))
                 {
+                    // UI ma dwa panele zależne od IsInMenu, więc odświeżamy też IsInQuiz.
                     OnPropertyChanged(nameof(IsInQuiz));
                 }
             }
@@ -58,6 +59,7 @@ namespace QuizSystem.Wpf.ViewModels
             {
                 if (SetProperty(ref _selectedQuiz, value))
                 {
+                    // Przycisk start ma działać dopiero po wybraniu quizu
                     StartQuizCommand.RaiseCanExecuteChanged();
                 }
             }
@@ -87,7 +89,7 @@ namespace QuizSystem.Wpf.ViewModels
         public int TotalQuestions => _questions.Count;
 
         /// <summary>
-        /// Publiczny dostęp do pytań (do wyświetlania podsumowania po Finish).
+        /// Publiczny dostęp do pytań (np. do wyświetlania podsumowania po Finish).
         /// </summary>
         public IReadOnlyList<QuestionViewModel> Questions => _questions;
 
@@ -98,6 +100,7 @@ namespace QuizSystem.Wpf.ViewModels
             {
                 if (SetProperty(ref _isFinished, value))
                 {
+                    // W tekście końcowym zależymy od IsFinished
                     OnPropertyChanged(nameof(FinishedMessage));
                 }
             }
@@ -135,7 +138,7 @@ namespace QuizSystem.Wpf.ViewModels
             // Start w menu
             IsInMenu = true;
 
-            // Na start domyślny quiz (gdyby ktoś odpalił bez menu)
+            // Domyślny quiz (awaryjnie) – przydaje się, gdy UI zostałby uruchomiony bez menu
             _quiz = QuizFactory.CreateSampleQuiz();
             _questions = _quiz.Questions.Select(q => new QuestionViewModel(q)).ToList();
 
@@ -153,12 +156,17 @@ namespace QuizSystem.Wpf.ViewModels
             CancelCommand = new RelayCommand(Cancel, CanCancel);
             CloseAppCommand = new RelayCommand(CloseApp);
 
+            // Lista quizów do menu (z fabryki; potem można to podmienić na DB)
             _allQuizzes = QuizFactory.CreateSampleQuizzes()
                 .Select(q => new QuizListItemViewModel(q))
                 .ToList();
 
             _filteredQuizzes = _allQuizzes.ToList();
             Quizzes = _filteredQuizzes;
+
+            // Przy starcie też odświeżamy komendy
+            RaiseButtons();
+            StartQuizCommand.RaiseCanExecuteChanged();
         }
 
         private bool CanGoNext() => !IsFinished && _currentIndex < _questions.Count - 1;
@@ -199,26 +207,21 @@ namespace QuizSystem.Wpf.ViewModels
                 userAnswers[q.Id] = q.GetChosenAnswerIds();
             }
 
-            // 2) Liczymy wynik domenowo
+            // 2) Liczymy wynik domenowo (logika w Quiz.CalculateScore)
             Score = _quiz.CalculateScore(userAnswers);
 
-            // 3) Oceniamy każde pytanie (✅/❌) – to pójdzie do podsumowania w UI
-            foreach (var q in _questions)
-            {
-                q.Evaluate();
-            }
-
-            // Po zakończeniu quizu informujemy odpowiedzi, że mogą się kolorować
+            // 3) Oceniamy każde pytanie i przygotowujemy UI do pokolorowania odpowiedzi
             foreach (var question in _questions)
             {
+                question.Evaluate();
+
                 foreach (var option in question.Options)
                 {
-                    option.IsQuizFinished = true;
+                    option.IsQuizFinished = true; // dopiero po Finish włączamy kolory
                 }
             }
 
-
-            // 4) Flaga końca
+            // 4) Flaga końca – panele w XAML reagują na IsFinished
             IsFinished = true;
 
             // 5) Odświeżamy UI
@@ -234,6 +237,7 @@ namespace QuizSystem.Wpf.ViewModels
                 foreach (var option in q.Options)
                 {
                     option.IsSelected = false;
+                    option.IsQuizFinished = false; // ważne: wyłączamy kolory po restarcie
                 }
 
                 q.ClearEvaluation();
@@ -278,6 +282,7 @@ namespace QuizSystem.Wpf.ViewModels
             PrevCommand.RaiseCanExecuteChanged();
             FinishCommand.RaiseCanExecuteChanged();
             CancelCommand.RaiseCanExecuteChanged();
+            StartQuizCommand.RaiseCanExecuteChanged();
         }
 
         private bool CanStartSelectedQuiz() => SelectedQuiz != null;
@@ -319,9 +324,13 @@ namespace QuizSystem.Wpf.ViewModels
                 .Select(q => new QuestionViewModel(q))
                 .ToList();
 
-            // reset ocen (na wypadek powrotu do quizu)
+            // reset ocen i kolorów (na wypadek powrotu do quizu)
             foreach (var q in _questions)
+            {
                 q.ClearEvaluation();
+                foreach (var opt in q.Options)
+                    opt.IsQuizFinished = false;
+            }
 
             _currentIndex = 0;
             CurrentQuestion = _questions[_currentIndex];
