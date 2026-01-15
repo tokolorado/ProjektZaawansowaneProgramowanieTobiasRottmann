@@ -124,8 +124,39 @@
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <CheckBox Content="{Binding Text}"
-                                              IsChecked="{Binding IsSelected, Mode=TwoWay}"
-                                              Margin="0,4,0,4"/>
+                                        IsChecked="{Binding IsSelected, Mode=TwoWay}"
+                                        Margin="0,4,0,4">
+                                        <CheckBox.Style>
+                                            <Style TargetType="CheckBox">
+
+                                                <!-- Domyślnie brak koloru -->
+                                                <Setter Property="Background" Value="Transparent"/>
+
+                                                <Style.Triggers>
+
+                                                    <!-- ✅ Poprawna odpowiedź (po zakończeniu) -->
+                                                    <MultiDataTrigger>
+                                                        <MultiDataTrigger.Conditions>
+                                                            <Condition Binding="{Binding IsQuizFinished}" Value="True"/>
+                                                            <Condition Binding="{Binding IsCorrect}" Value="True"/>
+                                                        </MultiDataTrigger.Conditions>
+                                                        <Setter Property="Background" Value="#DFF5EA"/>
+                                                    </MultiDataTrigger>
+
+                                                    <!-- ❌ Zaznaczona, ale błędna -->
+                                                    <MultiDataTrigger>
+                                                        <MultiDataTrigger.Conditions>
+                                                            <Condition Binding="{Binding IsQuizFinished}" Value="True"/>
+                                                            <Condition Binding="{Binding IsCorrect}" Value="False"/>
+                                                            <Condition Binding="{Binding IsSelected}" Value="True"/>
+                                                        </MultiDataTrigger.Conditions>
+                                                        <Setter Property="Background" Value="#FBEAEA"/>
+                                                    </MultiDataTrigger>
+
+                                                </Style.Triggers>
+                                            </Style>
+                                        </CheckBox.Style>
+                                    </CheckBox>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>

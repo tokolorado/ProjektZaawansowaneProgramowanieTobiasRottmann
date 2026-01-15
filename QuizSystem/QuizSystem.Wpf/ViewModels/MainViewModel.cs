@@ -208,6 +208,16 @@ namespace QuizSystem.Wpf.ViewModels
                 q.Evaluate();
             }
 
+            // Po zakończeniu quizu informujemy odpowiedzi, że mogą się kolorować
+            foreach (var question in _questions)
+            {
+                foreach (var option in question.Options)
+                {
+                    option.IsQuizFinished = true;
+                }
+            }
+
+
             // 4) Flaga końca
             IsFinished = true;
 

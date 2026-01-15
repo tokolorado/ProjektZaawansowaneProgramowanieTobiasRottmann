@@ -36,13 +36,11 @@ namespace QuizSystem.Wpf.ViewModels
 
         public QuestionViewModel(IQuestion question)
         {
-            _question = question;
-
             Id = question.Id;
             Content = question.Content;
 
             Options = question.Answers
-                .Select(a => new AnswerOptionViewModel(a.Id, a.Text))
+                .Select(a => new AnswerOptionViewModel(a.Id, a.Text, a.IsCorrect))
                 .ToList();
         }
 
