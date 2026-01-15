@@ -1,0 +1,221 @@
+1. Cel projektu (opis aplikacji)
+
+QuizSystem to desktopowa aplikacja edukacyjna typu quiz, umożliwiająca:
+
+wybór quizu z listy,
+
+rozwiązywanie pytań jednokrotnego i wielokrotnego wyboru,
+
+automatyczne sprawdzanie odpowiedzi,
+
+prezentację wyniku oraz podsumowania z wizualnym oznaczeniem poprawnych i błędnych odpowiedzi.
+
+Użytkownicy:
+
+studenci / uczniowie
+
+osoby uczące się podstaw .NET / C#
+
+Platforma:
+
+Windows (aplikacja desktopowa)
+
+
+
+2. Wymagania funkcjonalne
+
+Wyświetlanie listy dostępnych quizów
+
+Filtrowanie quizów po tytule / opisie
+
+Rozpoczęcie wybranego quizu
+
+Nawigacja pomiędzy pytaniami (Poprzednie / Następne)
+
+Obsługa pytań:
+
+jednokrotnego wyboru
+
+wielokrotnego wyboru
+
+Zaznaczanie odpowiedzi przez użytkownika
+
+Zakończenie quizu („Finish”)
+
+Automatyczne:
+
+obliczenie wyniku
+
+sprawdzenie poprawności odpowiedzi
+
+Podsumowanie quizu:
+
+wynik liczbowy
+
+lista pytań
+
+oznaczenie poprawnych i błędnych odpowiedzi
+
+kolorowanie:
+
+poprawne → zielone
+
+błędne → czerwone
+
+Restart quizu
+
+Wyjście z aplikacji
+
+
+
+3. Wymagania niefunkcjonalne
+
+Architektura MVVM (bez logiki w XAML)
+
+Czytelny, responsywny UI (WPF)
+
+Brak logiki biznesowej w View
+
+Separacja:
+
+domeny
+
+logiki aplikacyjnej
+
+infrastruktury danych
+
+Brak twardych zależności UI ↔ baza danych
+
+Możliwość dalszej rozbudowy (kolejne quizy, źródła danych)
+
+Czytelny, testowalny kod
+
+
+
+4. Architektura systemu
+Frontend
+
+WPF
+
+XAML + bindingi
+
+ViewModels (MVVM)
+
+Brak code-behind (poza bootstrapem)
+
+Backend (logika)
+
+Warstwa Core
+
+encje domenowe (Quiz, Question, Answer)
+
+interfejsy (IQuiz, IQuestion)
+
+logika sprawdzania odpowiedzi
+
+Warstwa Application
+
+obliczanie wyniku
+
+zarządzanie quizem
+
+Baza danych
+
+SQLite
+
+Entity Framework Core
+
+Migracje
+
+Seed danych (DbSeeder)
+
+Dostęp do danych
+
+Repository Pattern (IQuizRepository, EfQuizRepository)
+
+Mapowanie Entity ↔ Domain
+
+API
+
+Brak zewnętrznego API (aplikacja lokalna)
+
+Komunikacja wyłącznie wewnątrz aplikacji
+
+
+
+5. Użyte technologie
+
+C#
+
+.NET 7 / 8
+
+WPF
+
+MVVM
+
+Entity Framework Core
+
+SQLite
+
+LINQ
+
+XAML Triggers / Styles
+
+Repository Pattern
+
+Seed danych
+
+Migracje EF Core
+
+
+
+
+6. Aktualny stan projektu
+
+✅ Zaimplementowane:
+
+pełna architektura MVVM
+
+działająca baza danych + migracje
+
+seed quizów i pytań
+
+wybór i filtrowanie quizów
+
+rozwiązywanie quizu
+
+obliczanie wyniku
+
+podsumowanie quizu
+
+poprawne kolorowanie odpowiedzi
+
+restart quizu
+
+stabilny UI
+
+🟢 Projekt jest funkcjonalnie kompletny.
+
+
+
+7. TODO / możliwe braki na zaliczenie
+
+(Zależne od wymagań prowadzącego)
+
+Potencjalne rzeczy do dorobienia:
+
+ Diagram architektury (np. UML / komponentów)
+
+ Krótka dokumentacja techniczna (README / PDF)
+
+ Testy jednostkowe logiki domenowej
+
+ Obsługa zapisu wyników użytkownika
+
+ Tryb losowych pytań
+
+ Licznik czasu na pytanie / quiz
+
+ Eksport wyników (np. CSV)
+
+ Walidacja: brak zaznaczonych odpowiedzi

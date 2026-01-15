@@ -227,7 +227,7 @@
                     <Setter Property="Visibility" Value="Collapsed"/>
                     <Style.Triggers>
 
-                        <!-- jeśli menu -> koniec też ukryty -->
+                        <!-- jeśli menu -> koniec ukryty -->
                         <DataTrigger Binding="{Binding IsInMenu}" Value="True">
                             <Setter Property="Visibility" Value="Collapsed"/>
                         </DataTrigger>
@@ -242,171 +242,137 @@
 
             <StackPanel>
                 <TextBlock Text="✅ Quiz zakończony"
-                           FontSize="24"
-                           FontWeight="Bold"
-                           Margin="0,0,0,12"/>
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Margin="0,0,0,12"/>
 
                 <TextBlock Text="{Binding FinishedMessage}"
-                           FontSize="16"
-                           Margin="0,0,0,16"
-                           TextWrapping="Wrap"/>
+                   FontSize="16"
+                   Margin="0,0,0,16"
+                   TextWrapping="Wrap"/>
 
-                <!-- Podsumowanie: pytania na zielono/czerwono -->
+                <!-- PODSUMOWANIE -->
                 <Border BorderBrush="LightGray"
-                        BorderThickness="1"
-                        CornerRadius="6"
-                        Padding="10"
-                        Margin="0,0,0,16">
+                BorderThickness="1"
+                CornerRadius="6"
+                Padding="10"
+                Margin="0,0,0,16">
 
                     <StackPanel>
                         <TextBlock Text="Podsumowanie odpowiedzi:"
-                                   FontWeight="Bold"
-                                   Margin="0,0,0,8"/>
+                           FontWeight="Bold"
+                           Margin="0,0,0,8"/>
 
-                        <ScrollViewer Height="400" VerticalScrollBarVisibility="Auto">
+                        <ScrollViewer Height="637" VerticalScrollBarVisibility="Auto">
+                            <!-- UWAGA: tu bindujesz do Questions z MainViewModel (lista QuestionViewModel) -->
                             <ItemsControl ItemsSource="{Binding Questions}">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
+
+                                        <!-- Karta pytania (kolor zależny od IsCorrect pytania) -->
                                         <Border CornerRadius="6"
-                    Padding="10"
-                    Margin="0,0,0,10"
-                    BorderBrush="#E6E6E6"
-                    BorderThickness="1">
+                                        Padding="10"
+                                        Margin="0,0,0,10"
+                                        BorderThickness="1">
+                                            <Border.Style>
+                                                <Style TargetType="Border">
+                                                    <Setter Property="Background" Value="White"/>
+                                                    <Setter Property="BorderBrush" Value="#DDDDDD"/>
+
+                                                    <Style.Triggers>
+                                                        <!-- ✅ pytanie poprawne -->
+                                                        <DataTrigger Binding="{Binding IsCorrect}" Value="True">
+                                                            <Setter Property="Background" Value="#DFF5EA"/>
+                                                            <Setter Property="BorderBrush" Value="#86C7A7"/>
+                                                        </DataTrigger>
+
+                                                        <!-- ❌ pytanie błędne -->
+                                                        <DataTrigger Binding="{Binding IsCorrect}" Value="False">
+                                                            <Setter Property="Background" Value="#FBEAEA"/>
+                                                            <Setter Property="BorderBrush" Value="#D48B8B"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Border.Style>
 
                                             <StackPanel>
                                                 <TextBlock Text="{Binding Content}"
-                               FontWeight="SemiBold"
-                               TextWrapping="Wrap"/>
+                                                   FontWeight="SemiBold"
+                                                   TextWrapping="Wrap"/>
 
                                                 <TextBlock Text="{Binding ResultLabel}"
-                               Margin="0,6,0,10"
-                               FontWeight="Bold"/>
+                                                   Margin="0,6,0,8"
+                                                   FontWeight="Bold"/>
 
-                                                <!-- Odpowiedzi w podsumowaniu -->
-                                                <ItemsControl ItemsSource="{Binding Questions}">
+                                                <!-- Odpowiedzi w tym pytaniu: tu bindujesz do Options (NIE do Questions!) -->
+                                                <ItemsControl ItemsSource="{Binding Options}">
                                                     <ItemsControl.ItemTemplate>
                                                         <DataTemplate>
+                                                            <!-- pojedyncza odpowiedź (kolor zależny od AnswerOptionViewModel) -->
                                                             <Border CornerRadius="6"
-                    Padding="10"
-                    Margin="0,0,0,10"
-                    BorderThickness="1"
-                    BorderBrush="#DDDDDD"
-                    Background="White">
-
-                                                                <!-- Kolor tła całego pytania -->
+                                                            Padding="6"
+                                                            Margin="0,3,0,3">
                                                                 <Border.Style>
                                                                     <Style TargetType="Border">
-                                                                        <Setter Property="Background" Value="White"/>
-                                                                        <Setter Property="BorderBrush" Value="#DDDDDD"/>
+                                                                        <Setter Property="Background" Value="Transparent"/>
 
                                                                         <Style.Triggers>
-                                                                            <!-- ✅ pytanie poprawne -->
-                                                                            <DataTrigger Binding="{Binding IsCorrect}" Value="True">
-                                                                                <Setter Property="Background" Value="#DFF5EA"/>
-                                                                                <Setter Property="BorderBrush" Value="#86C7A7"/>
-                                                                            </DataTrigger>
+                                                                            <!-- ✅ poprawna odpowiedź (zawsze zielona po Finish) -->
+                                                                            <MultiDataTrigger>
+                                                                                <MultiDataTrigger.Conditions>
+                                                                                    <Condition Binding="{Binding IsQuizFinished}" Value="True"/>
+                                                                                    <Condition Binding="{Binding IsCorrect}" Value="True"/>
+                                                                                </MultiDataTrigger.Conditions>
+                                                                                <Setter Property="Background" Value="#CFEFE0"/>
+                                                                            </MultiDataTrigger>
 
-                                                                            <!-- ❌ pytanie błędne -->
-                                                                            <DataTrigger Binding="{Binding IsCorrect}" Value="False">
-                                                                                <Setter Property="Background" Value="#FBEAEA"/>
-                                                                                <Setter Property="BorderBrush" Value="#D48B8B"/>
-                                                                            </DataTrigger>
+                                                                            <!-- ❌ błędna zaznaczona (czerwona) -->
+                                                                            <MultiDataTrigger>
+                                                                                <MultiDataTrigger.Conditions>
+                                                                                    <Condition Binding="{Binding IsQuizFinished}" Value="True"/>
+                                                                                    <Condition Binding="{Binding IsCorrect}" Value="False"/>
+                                                                                    <Condition Binding="{Binding IsSelected}" Value="True"/>
+                                                                                </MultiDataTrigger.Conditions>
+                                                                                <Setter Property="Background" Value="#F5D1D1"/>
+                                                                            </MultiDataTrigger>
                                                                         </Style.Triggers>
                                                                     </Style>
                                                                 </Border.Style>
 
-                                                                <StackPanel>
-                                                                    <!-- Treść pytania -->
-                                                                    <TextBlock Text="{Binding Content}"
-                               FontWeight="SemiBold"
-                               TextWrapping="Wrap"/>
-
-                                                                    <!-- ✅/❌ etykieta -->
-                                                                    <TextBlock Text="{Binding ResultLabel}"
-                               Margin="0,6,0,8"
-                               FontWeight="Bold"/>
-
-                                                                    <!-- Lista odpowiedzi (bez True/False tekstem) -->
-                                                                    <ItemsControl ItemsSource="{Binding Options}">
-                                                                        <ItemsControl.ItemTemplate>
-                                                                            <DataTemplate>
-
-                                                                                <!-- kolorujemy BORDER (pewne), nie CheckBox -->
-                                                                                <Border CornerRadius="6"
-                                        Padding="6"
-                                        Margin="0,3,0,3"
-                                        Background="Transparent">
-                                                                                    <Border.Style>
-                                                                                        <Style TargetType="Border">
-                                                                                            <Setter Property="Background" Value="Transparent"/>
-
-                                                                                            <Style.Triggers>
-
-                                                                                                <!-- ✅ poprawna odpowiedź (po finish) -->
-                                                                                                <MultiDataTrigger>
-                                                                                                    <MultiDataTrigger.Conditions>
-                                                                                                        <Condition Binding="{Binding IsQuizFinished}" Value="True"/>
-                                                                                                        <Condition Binding="{Binding IsCorrect}" Value="True"/>
-                                                                                                    </MultiDataTrigger.Conditions>
-                                                                                                    <Setter Property="Background" Value="#CFEFE0"/>
-                                                                                                </MultiDataTrigger>
-
-                                                                                                <!-- ❌ zaznaczona, ale błędna -->
-                                                                                                <MultiDataTrigger>
-                                                                                                    <MultiDataTrigger.Conditions>
-                                                                                                        <Condition Binding="{Binding IsQuizFinished}" Value="True"/>
-                                                                                                        <Condition Binding="{Binding IsCorrect}" Value="False"/>
-                                                                                                        <Condition Binding="{Binding IsSelected}" Value="True"/>
-                                                                                                    </MultiDataTrigger.Conditions>
-                                                                                                    <Setter Property="Background" Value="#F5D1D1"/>
-                                                                                                </MultiDataTrigger>
-
-                                                                                            </Style.Triggers>
-                                                                                        </Style>
-                                                                                    </Border.Style>
-
-                                                                                    <!-- Zamiast True/False: checkbox zaznaczenia + tekst -->
-                                                                                    <StackPanel Orientation="Horizontal">
-                                                                                        <CheckBox IsChecked="{Binding IsSelected}"
-                                                  IsEnabled="False"
-                                                  Margin="0,0,6,0"/>
-                                                                                        <TextBlock Text="{Binding Text}" TextWrapping="Wrap"/>
-                                                                                    </StackPanel>
-                                                                                </Border>
-
-                                                                            </DataTemplate>
-                                                                        </ItemsControl.ItemTemplate>
-                                                                    </ItemsControl>
-
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <CheckBox IsChecked="{Binding IsSelected}"
+                                                                      IsEnabled="False"
+                                                                      Margin="0,0,6,0"/>
+                                                                    <TextBlock Text="{Binding Text}" TextWrapping="Wrap"/>
                                                                 </StackPanel>
                                                             </Border>
                                                         </DataTemplate>
                                                     </ItemsControl.ItemTemplate>
                                                 </ItemsControl>
 
-
                                             </StackPanel>
                                         </Border>
+
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
-
                         </ScrollViewer>
                     </StackPanel>
                 </Border>
 
                 <StackPanel Orientation="Horizontal">
                     <Button Content="Restart"
-                            Width="120"
-                            Command="{Binding RestartCommand}"/>
+                    Width="120"
+                    Command="{Binding RestartCommand}"/>
 
                     <Button Content="Zamknij aplikację"
-                            Width="160"
-                            Margin="12,0,0,0"
-                            Command="{Binding CloseAppCommand}"/>
+                    Width="160"
+                    Margin="12,0,0,0"
+                    Command="{Binding CloseAppCommand}"/>
                 </StackPanel>
             </StackPanel>
         </Border>
+
 
     </Grid>
 </Window>
