@@ -184,5 +184,15 @@ Gotowa wersja aplikacji znajduje się w katalogu:.\\Release16012026
 
 
 
+## Gotowa wersja aplikacji
+
+Gotowa wersja aplikacji (plik wykonywalny) dostępna jest w sekcji **Releases**:
+https://github.com/tokolorado/ProjektZaawansowaneProgramowanieTobiasRottmann/releases
+
+Wersja źródłowa projektu znajduje się w repozytorium.
+
+
+
+
 
 
