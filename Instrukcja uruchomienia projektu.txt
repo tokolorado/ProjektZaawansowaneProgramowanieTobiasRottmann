@@ -10,8 +10,12 @@ Aplikacja:
 Gotowa wersja aplikacji znajduje się w katalogu `Release16012026`.
 
 Aby uruchomić:
-1. Wejdź do folderu `Publish`
+1. Wejdź do folderu `Release16012026`
 2. Uruchom plik `QuizSystem.Wpf.exe`
+
+Aplikacja jest self-contained – nie wymaga instalacji środowiska .NET.
+
+
 
 
 
