@@ -99,5 +99,5 @@ kontroli wersji z zachowaną historią zmian w repozytorium GitHub.
 
 7. Podsumowanie
 
-Projekt QuizSystem spełnia założenia projektu z programowania zaawansowanego, prezentując praktyczne zastosowanie nowoczesnych technologii .NET, poprawną architekturę oraz dojrzałe podejście do projektowania aplikacji.
+Projekt QuizSystem spełnia założenia projektu, prezentując praktyczne zastosowanie nowoczesnych technologii .NET, poprawną architekturę oraz dojrzałe podejście do projektowania aplikacji.
 System jest w pełni funkcjonalny, stabilny oraz gotowy do dalszego rozwoju.

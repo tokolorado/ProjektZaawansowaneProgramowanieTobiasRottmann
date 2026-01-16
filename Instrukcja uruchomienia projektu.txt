@@ -2,6 +2,20 @@ Instrukcja uruchomienia projektu QuizSystem
 
 
 
+
+Aplikacja:
+
+## Uruchomienie aplikacji
+
+Gotowa wersja aplikacji znajduje się w katalogu `Release16012026`.
+
+Aby uruchomić:
+1. Wejdź do folderu `Publish`
+2. Uruchom plik `QuizSystem.Wpf.exe`
+
+
+
+
 Wymagania:
 
 Windows 10 / 11
@@ -11,6 +25,11 @@ Windows 10 / 11
 Visual Studio 2022 (zalecane)
 
 workload: .NET Desktop Development
+
+
+
+
+Projektowo:
 
 Kroki uruchomienia:
 

@@ -1,0 +1,8 @@
+dotnet publish `
+  -c Release `
+  -f net10.0-windows `
+  -r win-x64 `
+  --self-contained true `
+  -p:PublishSingleFile=true `
+  -p:PublishReadyToRun=true `
+  -o "C:\Users\tobia\Desktop\PublishOutput"
