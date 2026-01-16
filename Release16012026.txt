@@ -1,0 +1,23 @@
+
+Aby uruchomić aplikację:
+1. Wejdź do folderu `Release16012026`
+2. Uruchom plik `QuizSystem.Wpf.exe`
+
+Aplikacja jest **self-contained** – nie wymaga instalacji środowiska .NET.
+
+Przy pierwszym uruchomieniu aplikacja automatycznie:
+- tworzy bazę danych SQLite
+- wykonuje migracje
+- seeduje dane przykładowych quizów
+
+---
+
+## Stan projektu
+Projekt jest funkcjonalnie kompletny.
+Zaimplementowano pełną architekturę MVVM, działającą bazę danych,
+obsługę quizów, obliczanie wyników oraz stabilny interfejs użytkownika.
+
+---
+
+## Repozytorium
+https://github.com/tokolorado/ProjektZaawansowaneProgramowanieTobiasRottmann
